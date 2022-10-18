@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+        android:id="@+id/menuTask"
+        android:icon="@drawable/ic_task"
+        android:title="@string/task" />
+        <item
+            android:id="@+id/menuMaterials"
+            android:icon="@drawable/ic_materials"
+            android:title="@string/materials" />
+        <item
+            android:id="@+id/menuClients"
+            android:icon="@drawable/ic_person"
+            android:title="@string/clients" />
+        <item
+            android:id="@+id/menuUsers"
+            android:icon="@drawable/ic_person"
+            android:title="@string/users" />
+        <item
+            android:id="@+id/menuLogout"
+            android:icon="@drawable/ic_person"
+            android:title="@string/login" />
+    </group>
+
+</menu>

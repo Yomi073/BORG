@@ -8,7 +8,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-@Database(entities = {Client.class, Invoice.class, MaterialConsumption.class, MaterialStock.class, Role.class, Task.class, User.class}, version = 1)
+@Database(entities = {Client.class, Invoice.class, MaterialConsumption.class, MaterialStock.class, Role.class, Task.class, User.class}, version = 2)
 @TypeConverters({Converters.class})
 public abstract class DatabaseConnection extends RoomDatabase {
 

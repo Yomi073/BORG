@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "user", foreignKeys = @ForeignKey(entity = Role.class, parentColumns = "id",childColumns = "Role_FK", onDelete = 5))
+@Entity(tableName = "user", foreignKeys = @ForeignKey(entity = Role.class, parentColumns = "id",childColumns = "role_FK", onDelete = 5))
 public class User {
 
     @PrimaryKey(autoGenerate = true)
@@ -25,8 +25,8 @@ public class User {
     public String userName;
     @ColumnInfo(name = "password")
     public String password;
-    @ColumnInfo(name = "Role_FK", index = true)
-    public int Role_FK;
+    @ColumnInfo(name = "role_FK", index = true)
+    public int role_FK;
 
 
 }

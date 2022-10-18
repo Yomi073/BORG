@@ -73,7 +73,6 @@ public class Login extends AppCompatActivity {
                         startActivity(i);
                     }
                 }
-                db.close();
             } catch (Exception ex) {
                 Toast.makeText(Login.this,"Something went wrong!", Toast.LENGTH_LONG).show();
                 System.out.println("Error occurred: " + ex.getMessage());
@@ -89,6 +88,5 @@ public class Login extends AppCompatActivity {
             db.RoleDao().insertRole(1, "Admin");
             db.RoleDao().insertRole(2, "User");
         }
-        db.close();
     }
 }

@@ -6,4 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".controller.AdminProfile">
 
+    <include layout="@layout/activity_navigation"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

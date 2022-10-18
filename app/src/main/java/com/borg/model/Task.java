@@ -23,8 +23,8 @@ public class Task {
     @ColumnInfo(name = "endTime")
     public Long endTime;
     @ColumnInfo(name = "user_FK", index = true)
-    public int User_FK;
+    public int user_FK;
     @ColumnInfo(name = "client_FK", index = true)
-    public int Client_FK;
+    public int client_FK;
 
 }

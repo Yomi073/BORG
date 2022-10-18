@@ -63,7 +63,6 @@ public class SignUp extends AppCompatActivity {
                 } else {
                     Toast.makeText(SignUp.this,"Username already exists", Toast.LENGTH_LONG).show();
                 }
-                db.close();
             } catch (Exception e) {
                 Toast.makeText(SignUp.this,e.getMessage(), Toast.LENGTH_LONG).show();
                 e.printStackTrace();
