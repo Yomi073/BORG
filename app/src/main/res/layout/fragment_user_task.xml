@@ -1,53 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.UserTaskFragment"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:padding="8dp"
     android:stretchColumns="1,2,3,4"
-    android:padding="8dp">
+    tools:context=".controller.UserTaskFragment">
 
-    <TableRow>
-        <TextView
-            android:text="Task ID"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:gravity="center"
-            android:layout_column="1"/>
-        <TextView
-            android:text="Client name"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:gravity="center"
-            android:layout_column="2"/>
-        <TextView
-            android:text="Client address"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:gravity="center"
-            android:layout_column="3"/>
-        <TextView
-            android:text="Date"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:gravity="center"
-            android:layout_column="4"/>
-    </TableRow>
-
-
-    <ScrollView
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/table_user_task"/>
-    </ScrollView>
 
-</TableLayout>
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Task ID"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_column="2"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Client name"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_column="3"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Client address"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_column="4"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Date"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </TableRow>
+    </TableLayout>
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        >
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/table_user_task" />
+    </HorizontalScrollView>
+
+
+</LinearLayout>

@@ -32,13 +32,13 @@ public class UserNavigation extends AppCompatActivity {
             }
         });
 
-        NavigationView navigationView = findViewById(R.id.navigationView);
+        NavigationView navigationView = findViewById(R.id.navigationViewUser);
         navigationView.setItemIconTintList(null);
 
-        NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
+        NavController navController = Navigation.findNavController(this, R.id.navHostFragmentUser);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        replaceFragment(new UserTaskFragment());
+       // replaceFragment(new UserTaskFragment());
 
     }
 

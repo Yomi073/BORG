@@ -58,7 +58,7 @@
         android:id="@+id/navigationView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:menu="@menu/admin_nav_menu"
+        app:menu="@menu/user_nav_menu"
         android:layout_gravity="start"
         android:background="@color/colorPrimary"
         app:itemTextColor="@color/white"/>

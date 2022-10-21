@@ -35,10 +35,10 @@ public class UserTaskAdapter extends RecyclerView.Adapter<UserTaskAdapter.ViewHo
     public void onBindViewHolder(@NonNull UserTaskAdapter.ViewHolder holder, int position) {
         if(taskList != null && taskList.size() > 0){
             ViewUsersTasks model = taskList.get(position);
-            holder.tab_user_task_col1.setText(model.getId());
+            holder.tab_user_task_col1.setText(String.valueOf(model.getId()));
             holder.tab_user_task_col2.setText(model.getFirstname());
             holder.tab_user_task_col3.setText(model.getAddress());
-            holder.tab_user_task_col4.setText((CharSequence) model.getDate());
+            holder.tab_user_task_col4.setText("gpowjeglihsldighslidghlisdhglsdhgosdhgoshdgoshdgohsdgohsdog");
 
         }
     }

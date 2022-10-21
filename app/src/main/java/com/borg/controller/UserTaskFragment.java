@@ -13,8 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.borg.R;
 import com.borg.adapter.UserTaskAdapter;
+import com.borg.model.DatabaseConnection;
 import com.borg.model.ViewUsersTasks;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -43,23 +45,18 @@ public class UserTaskFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        getList();
-
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
-        UserTaskAdapter userTaskAdapter = new UserTaskAdapter(getContext(),taskList);
+        UserTaskAdapter userTaskAdapter = new UserTaskAdapter(getContext(),getList());
         recyclerView.setAdapter(userTaskAdapter);
         //userTaskAdapter.notifyDataSetChanged();
     }
 
     private List<ViewUsersTasks> getList(){
-        List<ViewUsersTasks> taskList = null; //db.TaskDao().getUsersTasks(getLoggedUser());
-        taskList.add(new ViewUsersTasks(1,"ante", "soro", "11.11.2012"));
-        taskList.add(new ViewUsersTasks(2,"ante", "soro", "11.11.2012"));
-
-        taskList.add(new ViewUsersTasks(3,"ante", "soro", "11.11.2012"));
+        DatabaseConnection db = DatabaseConnection.getDbInstance(getContext());
+        List<ViewUsersTasks> dasd = new ArrayList<>();
+        List<ViewUsersTasks> taskList = db.TaskDao().getUsersTasks(1);
         return taskList;
     }
 }
