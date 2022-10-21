@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/user_nav">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_nav"
+    app:startDestination="@id/menuTask">
+
+    <fragment
+        android:id="@+id/menuTask"
+        android:name="com.borg.controller.UserTaskFragment"
+        android:label="@string/task"
+        tools:layout="@layout/fragment_user_task" />
+    <fragment
+        android:id="@+id/menuProfile"
+        android:name="com.borg.controller.UserProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_user_profile" />
+    <activity
+        android:id="@+id/menuLogout"
+        android:name="com.borg.controller.Login"
+        android:label="@string/logout"
+        tools:layout="@layout/activity_login" />
+
 
 </navigation>

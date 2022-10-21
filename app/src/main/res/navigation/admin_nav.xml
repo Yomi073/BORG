@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/admin_nav"
+    app:startDestination="@id/menuTask">
+
+    <fragment
+        android:id="@+id/menuTask"
+        android:name="com.borg.controller.AdminTaskFragment"
+        android:label="Task"
+        tools:layout="@layout/fragment_admin_task" />
+    <fragment
+        android:id="@+id/menuMaterials"
+        android:name="com.borg.controller.AdminMaterialsFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_admin_materials" />
+    <fragment
+        android:id="@+id/menuClients"
+        android:name="com.borg.controller.AdminClientsFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_admin_clients" />
+    <fragment
+        android:id="@+id/menuUsers"
+        android:name="com.borg.controller.AdminUserFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_admin_user" />
+    <activity
+        android:id="@+id/menuLogout"
+        android:name="com.borg.controller.Login"
+        android:label="Logout"
+        tools:layout="@layout/activity_login" />
+
+
+</navigation>

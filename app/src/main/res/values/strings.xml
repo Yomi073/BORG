@@ -27,4 +27,11 @@
     <string name="signup">SignUP</string>
     <string name="welcome">Welcome</string>
     <string name="admin">Admin</string>
+    <string name="profile">Profile</string>
+    <string name="view">View</string>
+    <string name="logout">Logout</string>
+    <string name="task_id">Task ID</string>
+    <string name="date">Date</string>
+    <string name="client_name">Client Name</string>
+    <string name="options">Options</string>
 </resources>

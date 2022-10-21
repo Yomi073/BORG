@@ -26,4 +26,6 @@ public interface ClientDao {
     @Delete
     void delete(Client client);
 
+    @Query("INSERT INTO client (firstName, address) VALUES(:firstName,:address)")
+    void insertNewClient(String firstName, String address);
 }
