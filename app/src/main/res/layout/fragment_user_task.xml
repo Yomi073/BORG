@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="8dp"
     android:stretchColumns="1,2,3,4"
-    tools:context=".activity.user.UserTaskFragment">
+    tools:context=".activity.user.fragment.UserTaskFragment">
 
     <HorizontalScrollView
         android:layout_width="wrap_content"
@@ -60,13 +60,11 @@
             </TableLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
+                android:id="@+id/recycler_view_user_task"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/table_user_task" />
 
         </LinearLayout>
     </HorizontalScrollView>
-
-
 </LinearLayout>

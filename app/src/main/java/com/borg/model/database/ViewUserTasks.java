@@ -1,18 +1,16 @@
 package com.borg.model.database;
 
 public class ViewUserTasks {
-    Integer id;
-    String firstName;
-    String address;
-    String date;
 
-    public ViewUserTasks() {
-    }
+    private Integer id;
+    private String firstName;
+    private String address;
+    private String date;
 
-    public ViewUserTasks(Integer task_id, String client_name, String client_address, String date) {
-        this.id = task_id;
-        this.firstName = client_name;
-        this.address = client_address;
+    public ViewUserTasks(Integer id, String firstName, String address, String date) {
+        this.id = id;
+        this.firstName = firstName;
+        this.address = address;
         this.date = date;
     }
 
@@ -24,11 +22,11 @@ public class ViewUserTasks {
         this.id = id;
     }
 
-    public String getFirstname() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstname(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 

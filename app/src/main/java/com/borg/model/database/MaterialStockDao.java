@@ -14,9 +14,6 @@ public interface MaterialStockDao {
     @Insert
     void createMaterialStock(MaterialStock materialStock);
 
-    @Query("SELECT * FROM materialStock")
-    List<MaterialStock> readAllMaterialStock();
-
     @Update
     void update(MaterialStock materialStock);
 
@@ -25,5 +22,8 @@ public interface MaterialStockDao {
 
     @Delete
     void delete(MaterialStock materialStock);
+
+    @Query("SELECT * FROM materialstock")
+    List<ViewAdminMaterials> getAllMaterials();
 
 }

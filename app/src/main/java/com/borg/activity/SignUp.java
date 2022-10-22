@@ -38,12 +38,7 @@ public class SignUp extends AppCompatActivity {
         signupPassword = findViewById(R.id.signupPassword);
         btnSignUp = findViewById(R.id.btnSignUp);
 
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signUp(signupName.getText().toString(), signupSurname.getText().toString(), signupAddress.getText().toString(), signupPhoneNumber.getText().toString(), signupEmail.getText().toString(), signupUsername.getText().toString(), signupPassword.getText().toString());
-            }
-        });
+        btnSignUp.setOnClickListener(view -> signUp(signupName.getText().toString(), signupSurname.getText().toString(), signupAddress.getText().toString(), signupPhoneNumber.getText().toString(), signupEmail.getText().toString(), signupUsername.getText().toString(), signupPassword.getText().toString()));
     }
 
     private void signUp(String signupName, String signupSurname, String signupAddress, String signupPhoneNumber, String signupEmail, String signupUsername, String signupPassword){

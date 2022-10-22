@@ -1,4 +1,4 @@
-package com.borg.activity.admin;
+package com.borg.activity.admin.fragment;
 
 import android.os.Bundle;
 
@@ -13,19 +13,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.borg.R;
-import com.borg.adapter.AdminClientsAdapter;
+import com.borg.activity.admin.adapter.AdminTaskAdapter;
 import com.borg.model.DatabaseConnection;
-import com.borg.model.database.ViewAdminClients;
+import com.borg.model.database.ViewAdminTasks;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminClientsFragment extends Fragment {
+public class AdminTaskFragment extends Fragment {
 
     RecyclerView recyclerView;
-    List<ViewAdminClients> clientList;
+    List<ViewAdminTasks> tasksList_admin;
 
-    public AdminClientsFragment() {
+    public AdminTaskFragment() {
         // Required empty public constructor
     }
 
@@ -36,29 +36,24 @@ public class AdminClientsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_admin_clients, container, false);
-
+        return inflater.inflate(R.layout.fragment_admin_task, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView = view.findViewById(R.id.recycler_view_admin_tasks);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
-        AdminClientsAdapter adminClientsAdapter = new AdminClientsAdapter(getContext(),getList());
-        recyclerView.setAdapter(adminClientsAdapter);
-        //adminClientsAdapter.notifyDataSetChanged();
-
+        AdminTaskAdapter adminTaskAdapter = new AdminTaskAdapter(getContext(),getList());
+        recyclerView.setAdapter(adminTaskAdapter);
     }
 
-    private List<ViewAdminClients> getList(){
+    private List<ViewAdminTasks> getList(){
         DatabaseConnection db = DatabaseConnection.getDbInstance(getContext());
-        clientList = new ArrayList<>();
-        clientList = db.ClientDao().getAllClients();
-        return clientList;
+        tasksList_admin = new ArrayList<>();
+        tasksList_admin = db.TaskDao().getAllTasks();
+        return tasksList_admin;
     }
 }

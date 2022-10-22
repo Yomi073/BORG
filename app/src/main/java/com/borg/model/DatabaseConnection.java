@@ -44,7 +44,7 @@ public abstract class DatabaseConnection extends RoomDatabase {
                     .build();
         }
         return INSTANCE;
-    };
+    }
 
 
 }

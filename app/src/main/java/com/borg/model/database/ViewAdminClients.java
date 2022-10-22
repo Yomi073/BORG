@@ -1,15 +1,13 @@
 package com.borg.model.database;
 
 public class ViewAdminClients {
-    Integer id;
-    String firstName;
-    String lastName;
-    String address;
-    String phoneNumber;
-    String email;
 
-    public ViewAdminClients() {
-    }
+    private Integer id;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String phoneNumber;
+    private String email;
 
     public ViewAdminClients(Integer id, String firstName, String lastName, String address, String phoneNumber, String email) {
         this.id = id;

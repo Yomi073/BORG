@@ -113,34 +113,24 @@ public class Login extends AppCompatActivity {
         if (rst.isEmpty()) {
             db.TaskDao().insertNewTask(1,1);
             db.TaskDao().insertNewTask(1,2);
+            db.TaskDao().insertNewTask(1,3);
+            db.TaskDao().insertNewTask(1,4);
             db.TaskDao().insertNewTask(2,1);
             db.TaskDao().insertNewTask(2,2);
+            db.TaskDao().insertNewTask(2,3);
+            db.TaskDao().insertNewTask(2,4);
             db.TaskDao().insertNewTask(3,1);
             db.TaskDao().insertNewTask(3,2);
+            db.TaskDao().insertNewTask(3,3);
+            db.TaskDao().insertNewTask(3,4);
             db.TaskDao().insertNewTask(4,1);
             db.TaskDao().insertNewTask(4,2);
+            db.TaskDao().insertNewTask(4,3);
+            db.TaskDao().insertNewTask(4,4);
             db.TaskDao().insertNewTask(5,1);
             db.TaskDao().insertNewTask(5,2);
-            db.TaskDao().insertNewTask(1,1);
-            db.TaskDao().insertNewTask(1,2);
-            db.TaskDao().insertNewTask(2,1);
-            db.TaskDao().insertNewTask(2,2);
-            db.TaskDao().insertNewTask(3,1);
-            db.TaskDao().insertNewTask(3,2);
-            db.TaskDao().insertNewTask(4,1);
-            db.TaskDao().insertNewTask(4,2);
-            db.TaskDao().insertNewTask(5,1);
-            db.TaskDao().insertNewTask(5,2);
-            db.TaskDao().insertNewTask(1,1);
-            db.TaskDao().insertNewTask(1,2);
-            db.TaskDao().insertNewTask(2,1);
-            db.TaskDao().insertNewTask(2,2);
-            db.TaskDao().insertNewTask(3,1);
-            db.TaskDao().insertNewTask(3,2);
-            db.TaskDao().insertNewTask(4,1);
-            db.TaskDao().insertNewTask(4,2);
-            db.TaskDao().insertNewTask(5,1);
-            db.TaskDao().insertNewTask(5,2);
+            db.TaskDao().insertNewTask(5,3);
+            db.TaskDao().insertNewTask(5,4);
         }
     }
 }

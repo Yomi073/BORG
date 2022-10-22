@@ -22,17 +22,12 @@ public class AdminNavigation extends AppCompatActivity {
 
         final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
-        findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
+        findViewById(R.id.imageMenu).setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
 
-        NavigationView navigationView = findViewById(R.id.navigationView);
+        NavigationView navigationView = findViewById(R.id.navigationViewAdmin);
         navigationView.setItemIconTintList(null);
 
-        NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
+        NavController navController = Navigation.findNavController(this, R.id.navHostFragmentAdmin);
         NavigationUI.setupWithNavController(navigationView, navController);
 
     }

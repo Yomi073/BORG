@@ -1,4 +1,4 @@
-package com.borg.adapter;
+package com.borg.activity.user.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -36,7 +36,7 @@ public class UserTaskAdapter extends RecyclerView.Adapter<UserTaskAdapter.ViewHo
         if(taskList != null && taskList.size() > 0){
             ViewUserTasks model = taskList.get(position);
             holder.tab_user_task_col1.setText(String.valueOf(model.getId()));
-            holder.tab_user_task_col2.setText(model.getFirstname());
+            holder.tab_user_task_col2.setText(model.getFirstName());
             holder.tab_user_task_col3.setText(model.getAddress());
             holder.tab_user_task_col4.setText("gpowjeglihsldighslidghlisdhglsdhgosdhgoshdgoshdgohsdgohsdog");
 

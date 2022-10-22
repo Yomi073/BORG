@@ -1,16 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.admin.AdminClientsFragment">
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:stretchColumns="1,2,3,4,5,6"
+    tools:context="activity.admin.fragment.AdminClientsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/clients"
-        android:layout_gravity="center"
-        android:textSize="24sp"/>
+        android:fillViewport="true">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableRow>
+                    <TextView
+                        android:id="@+id/tab_admin_clients_col1"
+                        android:text="@string/client_id"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:layout_column="1"/>
+                    <TextView
+                        android:id="@+id/tab_admin_clients_col2"
+                        android:text="@string/name"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:layout_column="2"/>
+                    <TextView
+                        android:id="@+id/tab_admin_clients_col3"
+                        android:text="@string/surname"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:layout_column="3"/>
+                    <TextView
+                        android:id="@+id/tab_admin_clients_col4"
+                        android:text="@string/address"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:layout_column="4"/>
+                    <TextView
+                        android:id="@+id/tab_admin_clients_col5"
+                        android:text="@string/phone_number"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:layout_column="5"/>
+                    <TextView
+                        android:id="@+id/tab_admin_clients_col6"
+                        android:text="@string/email"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:layout_column="6"/>
+                </TableRow>
+            </TableLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_admin_clients"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/table_admin_clients" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>

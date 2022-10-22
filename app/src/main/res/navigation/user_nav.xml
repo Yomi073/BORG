@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/menuTask"
-        android:name="com.borg.activity.user.UserTaskFragment"
+        android:name="com.borg.activity.user.fragment.UserTaskFragment"
         android:label="@string/task"
         tools:layout="@layout/fragment_user_task" />
     <fragment
         android:id="@+id/menuProfile"
-        android:name="com.borg.activity.user.UserProfileFragment"
+        android:name="com.borg.activity.user.fragment.UserProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_user_profile" />
     <activity

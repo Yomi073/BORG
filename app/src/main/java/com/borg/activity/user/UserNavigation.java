@@ -3,9 +3,6 @@ package com.borg.activity.user;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
@@ -25,12 +22,7 @@ public class UserNavigation extends AppCompatActivity {
 
         final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
-        findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
+        findViewById(R.id.imageMenu).setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
 
         NavigationView navigationView = findViewById(R.id.navigationViewUser);
         navigationView.setItemIconTintList(null);
@@ -38,16 +30,5 @@ public class UserNavigation extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.navHostFragmentUser);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-       // replaceFragment(new UserTaskFragment());
-
     }
-
-    private void replaceFragment(Fragment fragment) {
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.recycler_view, fragment);
-        fragmentTransaction.commit();
-    }
-
 }

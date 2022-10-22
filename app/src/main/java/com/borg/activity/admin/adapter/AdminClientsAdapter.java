@@ -1,4 +1,4 @@
-package com.borg.adapter;
+package com.borg.activity.admin.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,11 +17,11 @@ import java.util.List;
 public class AdminClientsAdapter extends RecyclerView.Adapter<AdminClientsAdapter.ViewHolder> {
 
     Context context;
-    List<ViewAdminClients> clientsList;
+    List<ViewAdminClients> clientList;
 
-    public AdminClientsAdapter(Context context, List<ViewAdminClients> clientsList) {
+    public AdminClientsAdapter(Context context, List<ViewAdminClients> clientList) {
         this.context = context;
-        this.clientsList = clientsList;
+        this.clientList = clientList;
     }
 
     @NonNull
@@ -33,21 +33,21 @@ public class AdminClientsAdapter extends RecyclerView.Adapter<AdminClientsAdapte
 
     @Override
     public void onBindViewHolder(@NonNull AdminClientsAdapter.ViewHolder holder, int position) {
-        if(clientsList != null && clientsList.size() > 0){
-            ViewAdminClients model = clientsList.get(position);
-            holder.tab_admin_clients_col1.setText(model.getId());
+        if(clientList != null && clientList.size() > 0){
+            ViewAdminClients model = clientList.get(position);
+            holder.tab_admin_clients_col1.setText(String.valueOf(model.getId()));
             holder.tab_admin_clients_col2.setText(model.getFirstName());
             holder.tab_admin_clients_col3.setText(model.getLastName());
             holder.tab_admin_clients_col4.setText(model.getAddress());
-            holder.tab_admin_clients_col5.setText(model.getEmail());
-            holder.tab_admin_clients_col6.setText(model.getPhoneNumber());
+            holder.tab_admin_clients_col5.setText(String.valueOf(model.getPhoneNumber()));
+            holder.tab_admin_clients_col6.setText(model.getEmail());
 
         }
     }
 
     @Override
     public int getItemCount() {
-        return clientsList.size();
+        return clientList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
