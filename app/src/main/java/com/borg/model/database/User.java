@@ -1,4 +1,4 @@
-package com.borg.model;
+package com.borg.model.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -10,7 +10,7 @@ public class User {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id", index = true)
-    public int id;
+    public Integer id;
     @ColumnInfo(name = "firstName")
     public String firstName;
     @ColumnInfo(name = "lastName")
@@ -26,7 +26,7 @@ public class User {
     @ColumnInfo(name = "password")
     public String password;
     @ColumnInfo(name = "role_FK", index = true)
-    public int role_FK;
+    public Integer role_FK;
 
 
 

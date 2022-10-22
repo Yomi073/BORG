@@ -1,11 +1,8 @@
-package com.borg.controller;
+package com.borg.activity.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
@@ -16,12 +13,12 @@ import android.view.View;
 import com.borg.R;
 import com.google.android.material.navigation.NavigationView;
 
-public class UserNavigation extends AppCompatActivity {
+public class AdminNavigation extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_navigation);
+        setContentView(R.layout.activity_admin_navigation);
 
         final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
@@ -32,22 +29,11 @@ public class UserNavigation extends AppCompatActivity {
             }
         });
 
-        NavigationView navigationView = findViewById(R.id.navigationViewUser);
+        NavigationView navigationView = findViewById(R.id.navigationView);
         navigationView.setItemIconTintList(null);
 
-        NavController navController = Navigation.findNavController(this, R.id.navHostFragmentUser);
+        NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-       // replaceFragment(new UserTaskFragment());
-
     }
-
-    private void replaceFragment(Fragment fragment) {
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.recycler_view, fragment);
-        fragmentTransaction.commit();
-    }
-
 }

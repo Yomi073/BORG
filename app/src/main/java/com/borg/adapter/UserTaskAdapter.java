@@ -10,16 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.borg.R;
-import com.borg.model.ViewUsersTasks;
+import com.borg.model.database.ViewUserTasks;
 
 import java.util.List;
 
 public class UserTaskAdapter extends RecyclerView.Adapter<UserTaskAdapter.ViewHolder> {
 
     Context context;
-    List<ViewUsersTasks> taskList;
+    List<ViewUserTasks> taskList;
 
-    public UserTaskAdapter(Context context, List<ViewUsersTasks> taskList) {
+    public UserTaskAdapter(Context context, List<ViewUserTasks> taskList) {
         this.context = context;
         this.taskList = taskList;
     }
@@ -34,7 +34,7 @@ public class UserTaskAdapter extends RecyclerView.Adapter<UserTaskAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull UserTaskAdapter.ViewHolder holder, int position) {
         if(taskList != null && taskList.size() > 0){
-            ViewUsersTasks model = taskList.get(position);
+            ViewUserTasks model = taskList.get(position);
             holder.tab_user_task_col1.setText(String.valueOf(model.getId()));
             holder.tab_user_task_col2.setText(model.getFirstname());
             holder.tab_user_task_col3.setText(model.getAddress());

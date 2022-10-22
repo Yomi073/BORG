@@ -1,4 +1,4 @@
-package com.borg.controller;
+package com.borg.activity;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.borg.R;
 import com.borg.model.DatabaseConnection;
-import com.borg.model.RoleDao;
 
 public class SignUp extends AppCompatActivity {
 

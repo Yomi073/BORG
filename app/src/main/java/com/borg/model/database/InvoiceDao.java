@@ -1,4 +1,4 @@
-package com.borg.model;
+package com.borg.model.database;
 
 import androidx.room.Dao;
 import androidx.room.Delete;

@@ -1,28 +1,26 @@
-package com.borg.model;
+package com.borg.model.database;
 
-import java.util.Date;
-
-public class ViewUsersTasks {
-    int id;
+public class ViewUserTasks {
+    Integer id;
     String firstName;
     String address;
     String date;
 
-    public ViewUsersTasks() {
+    public ViewUserTasks() {
     }
 
-    public ViewUsersTasks(int task_id, String client_name, String client_address, String date) {
+    public ViewUserTasks(Integer task_id, String client_name, String client_address, String date) {
         this.id = task_id;
         this.firstName = client_name;
         this.address = client_address;
         this.date = date;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

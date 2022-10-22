@@ -1,6 +1,5 @@
-package com.borg.model;
+package com.borg.model.database;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -39,8 +38,8 @@ public interface UserDao {
     @Query("SELECT role.name FROM role LEFT JOIN user ON role.id=user.Role_FK WHERE userName=:Username")
     String findRoleNameByUserName(String Username);
 
-    @Query("SELECT id FROM user WHERE user.userName = :loginUsername")
-    int getLoggedUser(String loginUsername);
+    @Query("SELECT id FROM user WHERE userName=:Username")
+    int getUserIdByUsername(String Username);
 
 
 }

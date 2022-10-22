@@ -1,4 +1,4 @@
-package com.borg.model;
+package com.borg.model.database;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -14,9 +14,6 @@ public interface ClientDao {
     @Insert
     void createClient(Client client);
 
-    @Query("SELECT * FROM client")
-    List<Client> readAllClient();
-
     @Update
     void update(Client client);
 
@@ -25,6 +22,9 @@ public interface ClientDao {
 
     @Delete
     void delete(Client client);
+
+    @Query("SELECT * FROM client")
+    List<ViewAdminClients> getAllClients();
 
     @Query("INSERT INTO client (firstName, address) VALUES(:firstName,:address)")
     void insertNewClient(String firstName, String address);

@@ -1,4 +1,4 @@
-package com.borg.model;
+package com.borg.model.database;
 
 
 import androidx.room.ColumnInfo;
@@ -10,7 +10,7 @@ public class Client {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id", index = true)
-    public int id;
+    public Integer id;
     @ColumnInfo(name = "firstName")
     public String firstName;
     @ColumnInfo(name = "lastName")

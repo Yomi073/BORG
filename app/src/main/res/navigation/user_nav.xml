@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/menuTask"
-        android:name="com.borg.controller.UserTaskFragment"
+        android:name="com.borg.activity.user.UserTaskFragment"
         android:label="@string/task"
         tools:layout="@layout/fragment_user_task" />
     <fragment
         android:id="@+id/menuProfile"
-        android:name="com.borg.controller.UserProfileFragment"
+        android:name="com.borg.activity.user.UserProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_user_profile" />
     <activity
         android:id="@+id/menuLogout"
-        android:name="com.borg.controller.Login"
+        android:name="com.borg.activity.Login"
         android:label="@string/logout"
         tools:layout="@layout/activity_login" />
 

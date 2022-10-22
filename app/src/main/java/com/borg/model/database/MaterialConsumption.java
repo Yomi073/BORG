@@ -1,4 +1,4 @@
-package com.borg.model;
+package com.borg.model.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -10,12 +10,12 @@ public class MaterialConsumption {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id", index = true)
-    public int id;
+    public Integer id;
     @ColumnInfo(name = "quantity")
     public String quantity;
     @ColumnInfo(name = "materialStock_FK", index = true)
-    public int materialStock_FK;
+    public Integer materialStock_FK;
     @ColumnInfo(name = "task_FK", index = true)
-    public int task_FK;
+    public Integer task_FK;
 
 }

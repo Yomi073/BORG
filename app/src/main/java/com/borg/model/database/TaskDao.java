@@ -1,4 +1,4 @@
-package com.borg.model;
+package com.borg.model.database;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -6,7 +6,6 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Dao
@@ -27,8 +26,8 @@ public interface TaskDao {
     @Delete
     void delete(Task task);
 
-    @Query("SELECT task.id, client.firstName, client.address, task.date  FROM task LEFT JOIN client ON task.client_FK = client.id LEFT JOIN user ON task.user_FK = :i WHERE task.user_FK = :i")
-    List<ViewUsersTasks> getUsersTasks(int i);
+    @Query("SELECT task.id, client.firstName, client.address, task.date  FROM task LEFT JOIN client ON task.client_FK = client.id LEFT JOIN user ON task.user_FK = :i")
+    List<ViewUserTasks> getUserTasks(int i);
 
 
     @Query("INSERT INTO task (user_FK, client_FK) VALUES(:user_FK,:client_FK)")

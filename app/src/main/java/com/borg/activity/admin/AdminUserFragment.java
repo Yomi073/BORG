@@ -1,4 +1,4 @@
-package com.borg.controller;
+package com.borg.activity.admin;
 
 import android.os.Bundle;
 
@@ -7,16 +7,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.borg.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AdminClientsFragment#newInstance} factory method to
+ * Use the {@link AdminUserFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AdminClientsFragment extends Fragment {
+public class AdminUserFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +26,7 @@ public class AdminClientsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public AdminClientsFragment() {
+    public AdminUserFragment() {
         // Required empty public constructor
     }
 
@@ -37,11 +36,11 @@ public class AdminClientsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AdminClientsFragment.
+     * @return A new instance of fragment AdminUserFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AdminClientsFragment newInstance(String param1, String param2) {
-        AdminClientsFragment fragment = new AdminClientsFragment();
+    public static AdminUserFragment newInstance(String param1, String param2) {
+        AdminUserFragment fragment = new AdminUserFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -56,13 +55,13 @@ public class AdminClientsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        //((TextView)getActivity().findViewById(R.id.textTitleAdmin)).setText(R.string.clients);
+        //((TextView)getActivity().findViewById(R.id.textTitleAdmin)).setText(R.string.users);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_admin_clients, container, false);
+        return inflater.inflate(R.layout.fragment_admin_user, container, false);
     }
 }

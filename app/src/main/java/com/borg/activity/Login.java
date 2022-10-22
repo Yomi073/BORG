@@ -1,4 +1,4 @@
-package com.borg.controller;
+package com.borg.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,11 +9,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.borg.R;
-import com.borg.model.Client;
+import com.borg.activity.admin.AdminNavigation;
+import com.borg.activity.user.UserNavigation;
 import com.borg.model.DatabaseConnection;
-import com.borg.model.Role;
-import com.borg.model.Task;
-import com.borg.model.User;
+import com.borg.model.database.Role;
+import com.borg.model.database.Task;
+import com.borg.model.database.User;
+import com.borg.model.database.ViewAdminClients;
 
 import java.util.List;
 
@@ -23,14 +25,14 @@ public class Login extends AppCompatActivity {
     EditText loginPassword;
     Button btnLogin;
     Button btnSignUp;
-    private static int loggedUser;
+    private static Integer loggedUser;
 
-    public static int getLoggedUser() {
+    public static Integer getLoggedUser() {
         return loggedUser;
     }
 
-    public void setLoggedUser(int loggedUser) {
-        Login.loggedUser = loggedUser;
+    public void setLoggedUser(Integer loggedUser) {
+        this.loggedUser = loggedUser;
     }
 
     @Override
@@ -67,7 +69,7 @@ public class Login extends AppCompatActivity {
                 if (rs.isEmpty()){
                     Toast.makeText(Login.this,"Wrong credentials!!", Toast.LENGTH_LONG).show();
                 } else {
-                    loggedUser = db.UserDao().getLoggedUser(loginUsername);
+                    setLoggedUser(db.UserDao().getUserIdByUsername(loginUsername));
                     //if there is a match in database go to new activity
                     if (db.UserDao().findRoleNameByUserName(loginUsername).equals(getString(R.string.admin))){
                         Intent i = new Intent(this, AdminNavigation.class);
@@ -100,12 +102,12 @@ public class Login extends AppCompatActivity {
             db.UserDao().insertNewUser("s","s","s","2","s","s","s",2);
             db.UserDao().insertNewUser("w","w","w","2","w","w","w",2);
         }
-        List<Client> rsc = db.ClientDao().readAllClient();
+        List<ViewAdminClients> rsc = db.ClientDao().getAllClients();
         if (rsc.isEmpty()) {
-            db.ClientDao().insertNewClient("marko", "studenci");
-            db.ClientDao().insertNewClient("ivan", "ligat");
-            db.ClientDao().insertNewClient("ante", "vitina");
-            db.ClientDao().insertNewClient("matej", "crnopod");
+            db.ClientDao().insertNewClient("marko", "Studenci");
+            db.ClientDao().insertNewClient("ivan", "Ligat");
+            db.ClientDao().insertNewClient("ante", "Vitina");
+            db.ClientDao().insertNewClient("matej", "Crnopod");
         }
         List<Task> rst = db.TaskDao().readAllTask();
         if (rst.isEmpty()) {
@@ -117,6 +119,8 @@ public class Login extends AppCompatActivity {
             db.TaskDao().insertNewTask(3,2);
             db.TaskDao().insertNewTask(4,1);
             db.TaskDao().insertNewTask(4,2);
+            db.TaskDao().insertNewTask(5,1);
+            db.TaskDao().insertNewTask(5,2);
             db.TaskDao().insertNewTask(1,1);
             db.TaskDao().insertNewTask(1,2);
             db.TaskDao().insertNewTask(2,1);
@@ -125,6 +129,8 @@ public class Login extends AppCompatActivity {
             db.TaskDao().insertNewTask(3,2);
             db.TaskDao().insertNewTask(4,1);
             db.TaskDao().insertNewTask(4,2);
+            db.TaskDao().insertNewTask(5,1);
+            db.TaskDao().insertNewTask(5,2);
             db.TaskDao().insertNewTask(1,1);
             db.TaskDao().insertNewTask(1,2);
             db.TaskDao().insertNewTask(2,1);
@@ -133,16 +139,8 @@ public class Login extends AppCompatActivity {
             db.TaskDao().insertNewTask(3,2);
             db.TaskDao().insertNewTask(4,1);
             db.TaskDao().insertNewTask(4,2);
-            db.TaskDao().insertNewTask(1,1);
-            db.TaskDao().insertNewTask(1,2);
-            db.TaskDao().insertNewTask(2,1);
-            db.TaskDao().insertNewTask(2,2);
-            db.TaskDao().insertNewTask(3,1);
-            db.TaskDao().insertNewTask(3,2);
-            db.TaskDao().insertNewTask(4,1);
-            db.TaskDao().insertNewTask(4,2);
-            //db.TaskDao().insertNewTask(5,1);
-            //db.TaskDao().insertNewTask(5,2);
+            db.TaskDao().insertNewTask(5,1);
+            db.TaskDao().insertNewTask(5,2);
         }
     }
 }

@@ -7,27 +7,27 @@
 
     <fragment
         android:id="@+id/menuTask"
-        android:name="com.borg.controller.AdminTaskFragment"
+        android:name="com.borg.activity.admin.AdminTaskFragment"
         android:label="Task"
         tools:layout="@layout/fragment_admin_task" />
     <fragment
         android:id="@+id/menuMaterials"
-        android:name="com.borg.controller.AdminMaterialsFragment"
+        android:name="com.borg.activity.admin.AdminMaterialsFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_admin_materials" />
     <fragment
         android:id="@+id/menuClients"
-        android:name="com.borg.controller.AdminClientsFragment"
+        android:name="com.borg.activity.admin.AdminClientsFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_admin_clients" />
     <fragment
         android:id="@+id/menuUsers"
-        android:name="com.borg.controller.AdminUserFragment"
+        android:name="com.borg.activity.admin.AdminUserFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_admin_user" />
     <activity
         android:id="@+id/menuLogout"
-        android:name="com.borg.controller.Login"
+        android:name="com.borg.activity.Login"
         android:label="Logout"
         tools:layout="@layout/activity_login" />
 

@@ -1,4 +1,4 @@
-package com.borg.model;
+package com.borg.model.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -9,7 +9,7 @@ public class Invoice {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id", index = true)
-    public int id;
+    public Integer id;
     @ColumnInfo(name = "name")
     public String name;
     @ColumnInfo(name = "quantity")
