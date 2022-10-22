@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import java.util.Date;
 import java.util.List;
 
 @Dao
@@ -35,11 +36,11 @@ public interface TaskDao {
     @Query("SELECT firstName FROM client LEFT JOIN task ON client.id = :client_FK WHERE client.id = :client_FK")
     String getClientNameByFK(Integer client_FK);
 
-    @Query("SELECT task.id, client.firstName, client.address, task.date  FROM task LEFT JOIN client ON task.client_FK = client.id LEFT JOIN user ON task.user_FK = :i WHERE task.user_FK = :i")
+    @Query("SELECT task.id, client.firstName, client.address, task.date  FROM task LEFT JOIN client ON task.client_FK = client.id LEFT JOIN user ON task.user_FK = user.id WHERE task.user_FK = :i")
     List<ViewUserTasks> getUserTasks(int i);
 
-    @Query("INSERT INTO task (user_FK, client_FK) VALUES(:user_FK,:client_FK)")
-    void insertNewTask(int user_FK, int client_FK);
+    @Query("INSERT INTO task (user_FK, client_FK, date) VALUES(:user_FK,:client_FK,:date)")
+    void insertNewTask(int user_FK, int client_FK, Date date);
 
 
 }

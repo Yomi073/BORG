@@ -23,7 +23,7 @@ import com.borg.model.database.User;
 import com.borg.model.database.UserDao;
 
 @Database(entities = {Client.class, Invoice.class, MaterialConsumption.class, MaterialStock.class, Role.class, Task.class, User.class}, version = 2)
-@TypeConverters({Converters.class})
+@TypeConverters({TimestampConverter.class})
 public abstract class DatabaseConnection extends RoomDatabase {
 
     public abstract ClientDao ClientDao();

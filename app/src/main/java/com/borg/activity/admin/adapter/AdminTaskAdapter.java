@@ -41,7 +41,7 @@ public class AdminTaskAdapter extends RecyclerView.Adapter<AdminTaskAdapter.View
             holder.tab_admin_tasks_col1.setText(String.valueOf(model.getId()));
             holder.tab_admin_tasks_col2.setText(db.TaskDao().getUserNameByFK(model.getUser_FK()));
             holder.tab_admin_tasks_col3.setText(db.TaskDao().getClientNameByFK(model.getClient_FK()));
-            holder.tab_admin_tasks_col4.setText("gpowjeglihsldighslidghlisdhglsdhgosdhgoshdgoshdgohsdgohsdog");
+            holder.tab_admin_tasks_col4.setText(model.getDate());
 
         }
     }

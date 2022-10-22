@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="8dp"
     android:stretchColumns="1,2,3,4"
-    tools:context="activity.admin.fragment.AdminTaskFragment">
+    tools:context=".activity.admin.fragment.AdminTaskFragment">
 
     <HorizontalScrollView
         android:layout_width="wrap_content"

@@ -6,13 +6,13 @@ public class ViewAdminTasks {
 
     private Integer id;
     private Double pauseLength;
-    private Date date;
+    private String date;
     private Long startTime;
     private Long endTime;
     private Integer user_FK;
     private Integer client_FK;
 
-    public ViewAdminTasks(Integer id, Double pauseLength, Date date, Long startTime, Long endTime, Integer user_FK, Integer client_FK) {
+    public ViewAdminTasks(Integer id, Double pauseLength, String date, Long startTime, Long endTime, Integer user_FK, Integer client_FK) {
         this.id = id;
         this.pauseLength = pauseLength;
         this.date = date;
@@ -38,11 +38,11 @@ public class ViewAdminTasks {
         this.pauseLength = pauseLength;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

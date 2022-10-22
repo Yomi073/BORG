@@ -4,8 +4,11 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
-import java.sql.Date;
+import com.borg.model.TimestampConverter;
+
+import java.util.Date;
 
 @Entity(tableName = "task", foreignKeys = {@ForeignKey(entity = User.class, parentColumns = "id",childColumns = "user_FK", onDelete = 5), @ForeignKey(entity = Client.class, parentColumns = "id",childColumns = "client_FK", onDelete = 5)})
 public class Task {
@@ -16,6 +19,7 @@ public class Task {
     @ColumnInfo(name = "pauseLength")
     public Double pauseLength;
     @ColumnInfo(name = "date")
+    @TypeConverters({TimestampConverter.class})
     public Date date;
     @ColumnInfo(name = "startTime")
     public Long startTime;

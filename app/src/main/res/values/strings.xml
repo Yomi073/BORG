@@ -1,19 +1,16 @@
 <resources>
     <string name="app_name">BORG</string>
     <string name="title_activity_main">MainActivity</string>
-    <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="task">Task</string>
     <string name="materials">Materials</string>
     <string name="clients">Clients</string>
     <string name="users">Users</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login">Login</string>
     <string name="username">Username</string>
@@ -46,4 +43,6 @@
     <string name="client">Client</string>
     <string name="user_id">User ID</string>
     <string name="role">Role</string>
+    <string name="my_account_details">My account details</string>
+    <string name="save">Save</string>
 </resources>

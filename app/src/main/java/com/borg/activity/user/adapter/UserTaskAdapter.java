@@ -38,7 +38,7 @@ public class UserTaskAdapter extends RecyclerView.Adapter<UserTaskAdapter.ViewHo
             holder.tab_user_task_col1.setText(String.valueOf(model.getId()));
             holder.tab_user_task_col2.setText(model.getFirstName());
             holder.tab_user_task_col3.setText(model.getAddress());
-            holder.tab_user_task_col4.setText("gpowjeglihsldighslidghlisdhglsdhgosdhgoshdgoshdgohsdgohsdog");
+            holder.tab_user_task_col4.setText(model.getDate());
 
         }
     }
