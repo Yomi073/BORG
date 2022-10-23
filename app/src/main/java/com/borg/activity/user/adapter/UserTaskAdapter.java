@@ -2,7 +2,6 @@ package com.borg.activity.user.adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +73,20 @@ public class UserTaskAdapter extends RecyclerView.Adapter<UserTaskAdapter.ViewHo
     @Override
     public int getItemCount() {
         return taskList.size();
+    }
+
+    public int getColumnWidth(int column) {
+        int pom=0,i;
+        List<ViewUserTasks> pomList;
+
+        for(i=0;i<taskList.size();i++){
+            pomList = (List) taskList.get(i);
+
+            if(pom < pomList.get(column).toString().length()) {
+                pom = pomList.get(column).toString().length();
+            }
+        }
+        return pom;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

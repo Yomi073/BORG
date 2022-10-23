@@ -7,6 +7,9 @@ public class ViewUserTasks {
     private String address;
     private String date;
 
+    public ViewUserTasks() {
+    }
+
     public ViewUserTasks(Integer id, String firstName, String address, String date) {
         this.id = id;
         this.firstName = firstName;
