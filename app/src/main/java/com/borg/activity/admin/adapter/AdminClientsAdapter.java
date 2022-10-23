@@ -10,16 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.borg.R;
-import com.borg.model.database.ViewAdminClients;
+import com.borg.model.database.Client;
 
 import java.util.List;
 
 public class AdminClientsAdapter extends RecyclerView.Adapter<AdminClientsAdapter.ViewHolder> {
 
     Context context;
-    List<ViewAdminClients> clientList;
+    List<Client> clientList;
 
-    public AdminClientsAdapter(Context context, List<ViewAdminClients> clientList) {
+    public AdminClientsAdapter(Context context, List<Client> clientList) {
         this.context = context;
         this.clientList = clientList;
     }
@@ -34,7 +34,7 @@ public class AdminClientsAdapter extends RecyclerView.Adapter<AdminClientsAdapte
     @Override
     public void onBindViewHolder(@NonNull AdminClientsAdapter.ViewHolder holder, int position) {
         if(clientList != null && clientList.size() > 0){
-            ViewAdminClients model = clientList.get(position);
+            Client model = clientList.get(position);
             holder.tab_admin_clients_col1.setText(String.valueOf(model.getId()));
             holder.tab_admin_clients_col2.setText(model.getFirstName());
             holder.tab_admin_clients_col3.setText(model.getLastName());

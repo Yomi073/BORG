@@ -10,16 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.borg.R;
-import com.borg.model.database.ViewAdminMaterials;
+import com.borg.model.database.MaterialStock;
 
 import java.util.List;
 
 public class AdminMaterialsAdapter extends RecyclerView.Adapter<AdminMaterialsAdapter.ViewHolder> {
 
     Context context;
-    List<ViewAdminMaterials> materialsList;
+    List<MaterialStock> materialsList;
 
-    public AdminMaterialsAdapter(Context context, List<ViewAdminMaterials> materialsList) {
+    public AdminMaterialsAdapter(Context context, List<MaterialStock> materialsList) {
         this.context = context;
         this.materialsList = materialsList;
     }
@@ -34,7 +34,7 @@ public class AdminMaterialsAdapter extends RecyclerView.Adapter<AdminMaterialsAd
     @Override
     public void onBindViewHolder(@NonNull AdminMaterialsAdapter.ViewHolder holder, int position) {
         if(materialsList != null && materialsList.size() > 0){
-            ViewAdminMaterials model = materialsList.get(position);
+            MaterialStock model = materialsList.get(position);
             holder.tab_admin_materials_col1.setText(String.valueOf(model.getId()));
             holder.tab_admin_materials_col2.setText(model.getName());
             holder.tab_admin_materials_col3.setText(String.valueOf(model.getQuantity()));

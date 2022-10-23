@@ -28,7 +28,10 @@ public interface TaskDao {
     void delete(Task task);
 
     @Query("SELECT * FROM task")
-    List<ViewAdminTasks> getAllTasks();
+    List<Task> getAllTasks();
+
+    @Query("DELETE FROM task WHERE task.id = :id")
+    void deleteTaskId(int id);
 
     @Query("SELECT firstName FROM user LEFT JOIN task ON user.id = :user_FK WHERE user.id = :user_FK")
     String getUserNameByFK(Integer user_FK);

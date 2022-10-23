@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import com.borg.R;
 import com.borg.activity.admin.adapter.AdminClientsAdapter;
 import com.borg.model.DatabaseConnection;
-import com.borg.model.database.ViewAdminClients;
+import com.borg.model.database.Client;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.List;
 public class AdminClientsFragment extends Fragment {
 
     RecyclerView recyclerView;
-    List<ViewAdminClients> clientList;
+    List<Client> clientList;
 
     public AdminClientsFragment() {
         // Required empty public constructor
@@ -50,7 +50,7 @@ public class AdminClientsFragment extends Fragment {
         recyclerView.setAdapter(adminClientsAdapter);
     }
 
-    private List<ViewAdminClients> getList(){
+    private List<Client> getList(){
         DatabaseConnection db = DatabaseConnection.getDbInstance(getContext());
         clientList = new ArrayList<>();
         clientList = db.ClientDao().getAllClients();

@@ -7,7 +7,7 @@
     <TableRow>
         <TextView
             android:id="@+id/tab_admin_users_col1"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:gravity="center"
@@ -15,7 +15,7 @@
             android:layout_column="1"/>
         <TextView
             android:id="@+id/tab_admin_users_col2"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:gravity="center"
@@ -23,7 +23,7 @@
             android:layout_column="2"/>
         <TextView
             android:id="@+id/tab_admin_users_col3"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:gravity="center"
@@ -31,7 +31,7 @@
             android:layout_column="3"/>
         <TextView
             android:id="@+id/tab_admin_users_col4"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:gravity="center"
@@ -39,7 +39,7 @@
             android:layout_column="4"/>
         <TextView
             android:id="@+id/tab_admin_users_col5"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:gravity="center"
@@ -47,7 +47,7 @@
             android:layout_column="5"/>
         <TextView
             android:id="@+id/tab_admin_users_col6"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:gravity="center"
@@ -55,7 +55,7 @@
             android:layout_column="6"/>
         <TextView
             android:id="@+id/tab_admin_users_col7"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:gravity="center"
@@ -63,7 +63,7 @@
             android:layout_column="7"/>
         <TextView
             android:id="@+id/tab_admin_users_col8"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:gravity="center"
@@ -71,7 +71,7 @@
             android:layout_column="8"/>
         <TextView
             android:id="@+id/tab_admin_users_col9"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:gravity="center"

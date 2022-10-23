@@ -24,6 +24,6 @@ public interface MaterialStockDao {
     void delete(MaterialStock materialStock);
 
     @Query("SELECT * FROM materialstock")
-    List<ViewAdminMaterials> getAllMaterials();
+    List<MaterialStock> getAllMaterials();
 
 }

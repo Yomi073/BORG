@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.borg.R;
 import com.borg.model.DatabaseConnection;
-import com.borg.model.database.ViewAdminUsers;
+import com.borg.model.database.User;
 
 import java.util.List;
 
@@ -19,9 +19,9 @@ public class AdminUsersAdapter extends RecyclerView.Adapter<AdminUsersAdapter.Vi
 
     Context context;
     DatabaseConnection db;
-    List<ViewAdminUsers> clientList;
+    List<User> clientList;
 
-    public AdminUsersAdapter(Context context, List<ViewAdminUsers> clientList) {
+    public AdminUsersAdapter(Context context, List<User> clientList) {
         this.context = context;
         this.clientList = clientList;
         this.db = DatabaseConnection.getDbInstance(context);
@@ -37,7 +37,7 @@ public class AdminUsersAdapter extends RecyclerView.Adapter<AdminUsersAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull AdminUsersAdapter.ViewHolder holder, int position) {
         if(clientList != null && clientList.size() > 0){
-            ViewAdminUsers model = clientList.get(position);
+            User model = clientList.get(position);
             holder.tab_admin_users_col1.setText(String.valueOf(model.getId()));
             holder.tab_admin_users_col2.setText(model.getFirstName());
             holder.tab_admin_users_col3.setText(model.getLastName());

@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import com.borg.R;
 import com.borg.activity.admin.adapter.AdminTaskAdapter;
 import com.borg.model.DatabaseConnection;
-import com.borg.model.database.ViewAdminTasks;
+import com.borg.model.database.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.List;
 public class AdminTaskFragment extends Fragment {
 
     RecyclerView recyclerView;
-    List<ViewAdminTasks> tasksList_admin;
+    List<Task> tasksList_admin;
 
     public AdminTaskFragment() {
         // Required empty public constructor
@@ -50,7 +50,7 @@ public class AdminTaskFragment extends Fragment {
         recyclerView.setAdapter(adminTaskAdapter);
     }
 
-    private List<ViewAdminTasks> getList(){
+    private List<Task> getList(){
         DatabaseConnection db = DatabaseConnection.getDbInstance(getContext());
         tasksList_admin = new ArrayList<>();
         tasksList_admin = db.TaskDao().getAllTasks();

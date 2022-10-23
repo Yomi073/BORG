@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import com.borg.R;
 import com.borg.activity.admin.adapter.AdminMaterialsAdapter;
 import com.borg.model.DatabaseConnection;
-import com.borg.model.database.ViewAdminMaterials;
+import com.borg.model.database.MaterialStock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.List;
 public class AdminMaterialsFragment extends Fragment {
 
     RecyclerView recyclerView;
-    List<ViewAdminMaterials> materialsList;
+    List<MaterialStock> materialsList;
 
     public AdminMaterialsFragment() {
         // Required empty public constructor
@@ -50,7 +50,7 @@ public class AdminMaterialsFragment extends Fragment {
         recyclerView.setAdapter(adminMaterialsAdapter);
     }
 
-    private List<ViewAdminMaterials> getList(){
+    private List<MaterialStock> getList(){
         DatabaseConnection db = DatabaseConnection.getDbInstance(getContext());
         materialsList = new ArrayList<>();
         materialsList = db.MaterialStockDao().getAllMaterials();

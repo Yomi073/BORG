@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.borg.R;
 import com.borg.model.DatabaseConnection;
-import com.borg.model.database.ViewAdminTasks;
+import com.borg.model.database.Task;
 
 import java.util.List;
 
@@ -19,9 +19,9 @@ public class AdminTaskAdapter extends RecyclerView.Adapter<AdminTaskAdapter.View
 
     Context context;
     DatabaseConnection db;
-    List<ViewAdminTasks> tasksListAdmin;
+    List<Task> tasksListAdmin;
 
-    public AdminTaskAdapter(Context context, List<ViewAdminTasks> tasksListAdmin) {
+    public AdminTaskAdapter(Context context, List<Task> tasksListAdmin) {
         this.context = context;
         this.tasksListAdmin = tasksListAdmin;
         this.db = DatabaseConnection.getDbInstance(context);
@@ -37,11 +37,11 @@ public class AdminTaskAdapter extends RecyclerView.Adapter<AdminTaskAdapter.View
     @Override
     public void onBindViewHolder(@NonNull AdminTaskAdapter.ViewHolder holder, int position) {
         if(tasksListAdmin != null && tasksListAdmin.size() > 0){
-            ViewAdminTasks model = tasksListAdmin.get(position);
+            Task model = tasksListAdmin.get(position);
             holder.tab_admin_tasks_col1.setText(String.valueOf(model.getId()));
             holder.tab_admin_tasks_col2.setText(db.TaskDao().getUserNameByFK(model.getUser_FK()));
             holder.tab_admin_tasks_col3.setText(db.TaskDao().getClientNameByFK(model.getClient_FK()));
-            holder.tab_admin_tasks_col4.setText(model.getDate());
+            holder.tab_admin_tasks_col4.setText(String.valueOf(model.getDate()));
 
         }
     }

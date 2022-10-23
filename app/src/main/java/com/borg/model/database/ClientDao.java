@@ -24,7 +24,7 @@ public interface ClientDao {
     void delete(Client client);
 
     @Query("SELECT * FROM client")
-    List<ViewAdminClients> getAllClients();
+    List<Client> getAllClients();
 
     @Query("INSERT INTO client (firstName, address) VALUES(:firstName,:address)")
     void insertNewClient(String firstName, String address);

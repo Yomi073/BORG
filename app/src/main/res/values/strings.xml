@@ -45,4 +45,9 @@
     <string name="role">Role</string>
     <string name="my_account_details">My account details</string>
     <string name="save">Save</string>
+    <string name="invoice_id">Invoice ID</string>
+    <string name="material">Material</string>
+    <string name="price">Price</string>
+    <string name="sum">Sum</string>
+    <string name="invoice">Invoice</string>
 </resources>

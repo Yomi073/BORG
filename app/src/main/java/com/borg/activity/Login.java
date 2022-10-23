@@ -15,7 +15,7 @@ import com.borg.model.DatabaseConnection;
 import com.borg.model.database.Role;
 import com.borg.model.database.Task;
 import com.borg.model.database.User;
-import com.borg.model.database.ViewAdminClients;
+import com.borg.model.database.Client;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -105,7 +105,7 @@ public class Login extends AppCompatActivity {
             db.UserDao().insertNewUser("s","s","s","2","s","s","s",2);
             db.UserDao().insertNewUser("w","w","w","2","w","w","w",2);
         }
-        List<ViewAdminClients> rsc = db.ClientDao().getAllClients();
+        List<Client> rsc = db.ClientDao().getAllClients();
         if (rsc.isEmpty()) {
             db.ClientDao().insertNewClient("markoooooooooooooooo", "Studencioooooooo");
             db.ClientDao().insertNewClient("ivan", "Ligat");

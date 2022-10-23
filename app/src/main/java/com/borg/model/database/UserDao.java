@@ -11,27 +11,20 @@ import java.util.List;
 @Dao
 public interface UserDao {
 
-    @Insert
-    void createUser(User user);
-
     @Query("SELECT * FROM user")
     List<User> readAllUsers();
 
-    @Update
-    void update(User user);
-
-    @Query("DELETE FROM user")
-    void deleteAllUsers();
-
-    @Delete
-    void delete(User user);
-
     @Query("SELECT * FROM user")
-    List<ViewAdminUsers> getAllUsers();
+    List<User> getAllUsers();
+
+    @Update
+    void update(User User);
+
+    @Query("SELECT * FROM user WHERE id = :id")
+    User getUser(Integer id);
 
     @Query("SELECT name FROM role LEFT JOIN user ON role.id = :role_FK")
     String getRoleByFK(Integer role_FK);
-
 
     @Query("INSERT INTO user (firstName,lastName,address,phoneNumber,email,userName,password,role_FK) VALUES(:firstName,:lastName,:address,:phoneNumber,:email,:userName,:password, :role_FK)")
     void insertNewUser(String firstName,String lastName,String address,String phoneNumber,String email,String userName,String password, Integer role_FK);
