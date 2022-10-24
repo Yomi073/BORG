@@ -1,14 +1,18 @@
 package com.borg.activity.user.fragment;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +23,7 @@ import com.borg.activity.Login;
 import com.borg.model.database.ViewUserTasks;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class UserTaskFragment extends Fragment {
@@ -45,10 +50,10 @@ public class UserTaskFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = view.findViewById(R.id.recycler_view_user_task);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 5));
-        recyclerView.setHasFixedSize(false);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         UserTaskAdapter userTaskAdapter = new UserTaskAdapter(getContext(),getList());
         recyclerView.setAdapter(userTaskAdapter);
+
     }
 
     private List<ViewUserTasks> getList(){

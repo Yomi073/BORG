@@ -1,51 +1,97 @@
 package com.borg.model.database;
 
+import androidx.room.TypeConverters;
+
+import com.borg.model.TimestampConverter;
+
+import java.util.Date;
+
 public class ViewUserTasks {
 
-    private Integer id;
-    private String firstName;
-    private String address;
-    private String date;
+    private Integer task_id;
+    @TypeConverters({TimestampConverter.class})
+    private Date task_date;
+    private Integer user_id;
+    private Integer client_id;
+    private String user_firstName;
+    private String client_firstName;
+    private String client_address;
+    private String client_phoneNumber;
 
-    public ViewUserTasks() {
+    public ViewUserTasks(Integer task_id, Date task_date, Integer user_id, Integer client_id, String user_firstName, String client_firstName, String client_address, String client_phoneNumber) {
+        this.task_id = task_id;
+        this.task_date = task_date;
+        this.user_id = user_id;
+        this.client_id = client_id;
+        this.user_firstName = user_firstName;
+        this.client_firstName = client_firstName;
+        this.client_address = client_address;
+        this.client_phoneNumber = client_phoneNumber;
     }
 
-    public ViewUserTasks(Integer id, String firstName, String address, String date) {
-        this.id = id;
-        this.firstName = firstName;
-        this.address = address;
-        this.date = date;
+    public Integer getTask_id() {
+        return task_id;
     }
 
-    public Integer getId() {
-        return id;
+    public void setTask_id(Integer task_id) {
+        this.task_id = task_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    @TypeConverters({TimestampConverter.class})
+    public Date getTask_date() {
+        return task_date;
     }
 
-    public String getFirstName() {
-        return firstName;
+    @TypeConverters({TimestampConverter.class})
+    public void setTask_date(Date task_date) {
+        this.task_date = task_date;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public Integer getUser_id() {
+        return user_id;
     }
 
-    public String getAddress() {
-        return address;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public Integer getClient_id() {
+        return client_id;
     }
 
-    public String getDate() {
-        return date;
+    public void setClient_id(Integer client_id) {
+        this.client_id = client_id;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public String getUser_firstName() {
+        return user_firstName;
+    }
+
+    public void setUser_firstName(String user_firstName) {
+        this.user_firstName = user_firstName;
+    }
+
+    public String getClient_firstName() {
+        return client_firstName;
+    }
+
+    public void setClient_firstName(String client_firstName) {
+        this.client_firstName = client_firstName;
+    }
+
+    public String getClient_address() {
+        return client_address;
+    }
+
+    public void setClient_address(String client_address) {
+        this.client_address = client_address;
+    }
+
+    public String getClient_phoneNumber() {
+        return client_phoneNumber;
+    }
+
+    public void setClient_phoneNumber(String client_phoneNumber) {
+        this.client_phoneNumber = client_phoneNumber;
     }
 }

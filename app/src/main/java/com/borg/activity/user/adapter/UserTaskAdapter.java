@@ -1,10 +1,13 @@
 package com.borg.activity.user.adapter;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.borg.R;
+import com.borg.activity.Login;
 import com.borg.model.DatabaseConnection;
 import com.borg.model.database.ViewUserTasks;
 
@@ -22,6 +26,7 @@ public class UserTaskAdapter extends RecyclerView.Adapter<UserTaskAdapter.ViewHo
 
     Context context;
     List<ViewUserTasks> taskList;
+    DatabaseConnection db = DatabaseConnection.getDbInstance(this.context);
 
     public UserTaskAdapter(Context context, List<ViewUserTasks> taskList) {
         this.context = context;
@@ -39,33 +44,40 @@ public class UserTaskAdapter extends RecyclerView.Adapter<UserTaskAdapter.ViewHo
     public void onBindViewHolder(@NonNull UserTaskAdapter.ViewHolder holder, int position) {
         if(taskList != null && taskList.size() > 0){
             ViewUserTasks model = taskList.get(position);
+
             holder.taskDetails.setOnClickListener(v -> {
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage("Write your message here.");
-                builder1.setCancelable(true);
+                Dialog dialog = new Dialog(context);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setCancelable(true);
+                dialog.setContentView(R.layout.dialog_user_invoice);
 
-                builder1.setPositiveButton(
-                        "Yes",
-                        (dialog, id) -> dialog.cancel());
+                TextView txtClientName = dialog.findViewById(R.id.txtClientName);
+                TextView txtClientAddress = dialog.findViewById(R.id.txtClientAddress);
+                TextView txtClientPhone = dialog.findViewById(R.id.txtClientPhone);
+                TextView txtClientID = dialog.findViewById(R.id.txtClientID);
+                TextView txtTaskID = dialog.findViewById(R.id.txtTaskID);
+                TextView txtTaskDate = dialog.findViewById(R.id.txtTaskDate);
+                TextView txtTaskTotalSum = dialog.findViewById(R.id.txtTaskTotalSum);
 
-                builder1.setNegativeButton(
-                        "No",
-                        (dialog, id) -> dialog.cancel());
+                txtClientName.setText(model.getClient_firstName().toString());
+                txtClientAddress.setText(model.getClient_address().toString());
 
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
+                //txtClientPhone.setText(model.getClient_phoneNumber().toString());
+                txtClientID.setText(model.getClient_id().toString());
+                txtTaskID.setText(model.getTask_id().toString());
+
+                //opet popravit datum sa type converterom
+                //txtTaskDate.setText(model.getTask_date().toString());
+                //dodati sumu cijene svih itema racuna
+                //txtTaskTotalSum.setText(model.get);
+
+
+                dialog.show();
             });
-            holder.tab_user_task_col1.setText(String.valueOf(model.getId()));
-            holder.tab_user_task_col2.setText(model.getFirstName());
-            holder.tab_user_task_col3.setText(model.getAddress());
-            holder.tab_user_task_col4.setText(model.getDate());
-            holder.deleteButton.setOnClickListener( v -> {
-                DatabaseConnection db = DatabaseConnection.getDbInstance(this.context);
-                db.TaskDao().deleteTaskId(model.getId());
-                taskList.remove(position);
-                notifyItemRemoved(position);
-            });
-
+            holder.tab_user_task_col1.setText(String.valueOf(model.getTask_id()));
+            holder.tab_user_task_col2.setText(model.getClient_firstName());
+            holder.tab_user_task_col3.setText(model.getClient_address());
+            holder.tab_user_task_col4.setText(model.getTask_date().toString());
         }
     }
 
@@ -89,10 +101,15 @@ public class UserTaskAdapter extends RecyclerView.Adapter<UserTaskAdapter.ViewHo
         return pom;
     }
 
+    public void notifyItemAdd(){
+        //potrebno da dodas i azuriras listu trenutno, bez da mijenjas ekran odma ti se pojavi novi task
+        taskList=db.TaskDao().getUserTasks(Login.getLoggedUser());
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tab_user_task_col1,tab_user_task_col2,tab_user_task_col3,tab_user_task_col4;
-        ImageButton deleteButton;
         LinearLayout taskDetails;
 
         public ViewHolder(@NonNull View itemView) {
@@ -102,7 +119,6 @@ public class UserTaskAdapter extends RecyclerView.Adapter<UserTaskAdapter.ViewHo
             tab_user_task_col2 = itemView.findViewById(R.id.tab_user_task_col2);
             tab_user_task_col3 = itemView.findViewById(R.id.tab_user_task_col3);
             tab_user_task_col4 = itemView.findViewById(R.id.tab_user_task_col4);
-            deleteButton = itemView.findViewById(R.id.deleteButton);
         }
     }
 }

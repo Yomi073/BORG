@@ -1,0 +1,45 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dodavanje novog zadatka"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Molimo unesite tražene podatke"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        <EditText
+            android:id="@+id/plain_text_input_id_user"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:hint="ID Usera"
+            android:inputType="text"/>
+        <EditText
+            android:id="@+id/plain_text_input_id_client"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:hint="ID Klijenta"
+            android:inputType="text"/>
+        <Button
+            android:id="@+id/buttonOk"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorPrimary"
+            android:text="Dodaj"
+            android:textColor="#FFF" />
+    </LinearLayout>
+</LinearLayout>
