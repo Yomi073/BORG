@@ -26,4 +26,7 @@ public interface MaterialStockDao {
     @Query("SELECT * FROM materialstock")
     List<MaterialStock> getAllMaterials();
 
+    @Query("INSERT INTO materialstock (name, quantity, purchasePrice, sellingPrice) VALUES (:name, :quantity, :purchasePrice, :sellingPrice)")
+    void insertNewMaterialStock(String name, Double quantity, Double purchasePrice, Double sellingPrice);
+
 }

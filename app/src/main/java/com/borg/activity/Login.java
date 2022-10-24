@@ -12,6 +12,8 @@ import com.borg.R;
 import com.borg.activity.admin.AdminNavigation;
 import com.borg.activity.user.UserNavigation;
 import com.borg.model.DatabaseConnection;
+import com.borg.model.database.MaterialConsumption;
+import com.borg.model.database.MaterialStock;
 import com.borg.model.database.Role;
 import com.borg.model.database.Task;
 import com.borg.model.database.User;
@@ -136,5 +138,49 @@ public class Login extends AppCompatActivity {
             db.TaskDao().insertNewTask(5,3,new Date());
             db.TaskDao().insertNewTask(5,4,new Date());
         }
+        List<MaterialStock> rsms =db.MaterialStockDao().getAllMaterials();
+
+        if(rsms.isEmpty()){
+            db.MaterialStockDao().insertNewMaterialStock("sijalica",600.0,2.0,4.0);
+            db.MaterialStockDao().insertNewMaterialStock("kablo",10000.0,0.1,0.7);
+            db.MaterialStockDao().insertNewMaterialStock("steker", 750.0,20.0,27.0);
+        }
+        List<MaterialConsumption> rsmc = db.MaterialConsumptionDao().readAllMaterialConsumption();
+
+        if(rsmc.isEmpty()){
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(1.0,1,1);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(2.0,2, 2);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(3.0,3, 3);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(4.0,1,4);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(5.0,2,5);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(6.0,3,6);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(7.0,1,7);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(8.0,2,8);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(9.0,3,9);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(10.0,1,10);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(1.0,1,1);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(2.0,2, 2);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(3.0,3, 3);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(4.0,1,4);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(5.0,2,5);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(6.0,3,6);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(7.0,1,7);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(8.0,2,8);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(9.0,3,15);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(10.0,1,15);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(1.0,1,16);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(2.0,2, 16);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(3.0,3, 17);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(4.0,1,17);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(5.0,2,18);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(6.0,3,18);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(7.0,1,19);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(8.0,2,19);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(9.0,3,20);
+            db.MaterialConsumptionDao().insertNewMaterialConsumption(10.0,1,20);
+
+
+        }
+
     }
 }

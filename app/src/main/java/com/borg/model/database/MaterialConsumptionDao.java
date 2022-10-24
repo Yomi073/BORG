@@ -26,4 +26,7 @@ public interface MaterialConsumptionDao {
     @Delete
     void delete(MaterialConsumption materialConsumption);
 
+    @Query("INSERT INTO materialconsumption (quantity, materialStock_FK, task_FK) VALUES (:quantity, :materialStock_FK, :task_FK)")
+    void insertNewMaterialConsumption(Double quantity, Integer materialStock_FK, Integer task_FK);
+
 }
