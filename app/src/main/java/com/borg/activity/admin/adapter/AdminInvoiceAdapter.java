@@ -76,7 +76,7 @@ public class AdminInvoiceAdapter extends RecyclerView.Adapter<AdminInvoiceAdapte
 
     public void notifyItemAdd(){
         db = DatabaseConnection.getDbInstance(context);
-        viewInvoice=db.MaterialConsumptionDao().getInvoiceByTaskID(viewInvoice.get(selected_task).getId_task());
+        viewInvoice=db.MaterialConsumptionDao().getInvoiceByTaskID(selected_task);
         notifyDataSetChanged();
     }
 

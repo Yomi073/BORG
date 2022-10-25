@@ -94,7 +94,7 @@ public class Login extends AppCompatActivity {
 
     private void insert(){
         DatabaseConnection db = DatabaseConnection.getDbInstance(this.getApplicationContext());
-        List<Role> rsr = db.RoleDao().readAllRole();
+        List<Role> rsr = db.RoleDao().getAllRoles();
         if(rsr.isEmpty()) {
             db.RoleDao().insertRole(1, "Admin");
             db.RoleDao().insertRole(2, "User");

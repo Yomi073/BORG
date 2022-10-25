@@ -61,7 +61,6 @@ public class AdminTaskFragment extends Fragment {
         recyclerView.setAdapter(adminTaskAdapter);
 
         ImageButton addButton = view.findViewById(R.id.addButton);
-
         addButton.setOnClickListener( v -> {
 
             final Dialog dialog = new Dialog(getContext());
@@ -105,6 +104,7 @@ public class AdminTaskFragment extends Fragment {
             });
             dialog.show();
         });
+
     }
 
     private List<ViewUserTasks> getList(){

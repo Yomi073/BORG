@@ -90,7 +90,8 @@ public class AdminInvoiceFragment extends Fragment {
         }
 
         recyclerView = view.findViewById(R.id.recycler_view_invoice);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));//mozda treba poslat poziciju
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        //mozda treba poslat poziciju
         AdminInvoiceAdapter adminInvoiceAdapter = new AdminInvoiceAdapter(getActivity(),viewInvoiceList,selected_task);
         recyclerView.setAdapter(adminInvoiceAdapter);
 
@@ -104,8 +105,8 @@ public class AdminInvoiceFragment extends Fragment {
             dialog.setCancelable(true);
             dialog.setContentView(R.layout.dialog_add_invoice_material);
 
-            final Spinner spinnerMaterial = (Spinner) dialog.findViewById(R.id.spinner_id_material);
-            final EditText quantityMaterial = (EditText) dialog.findViewById(R.id.add_fromdatabase_material_txt_material_quantity) ;
+            Spinner spinnerMaterial = (Spinner) dialog.findViewById(R.id.spinner_id_material);
+            EditText quantityMaterial = (EditText) dialog.findViewById(R.id.add_fromdatabase_material_txt_material_quantity) ;
 
             List<MaterialStock> material = db.MaterialStockDao().getAllMaterials();
 
@@ -121,6 +122,7 @@ public class AdminInvoiceFragment extends Fragment {
             dataAdapterMaterial.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             // attaching data adapter to spinner
             spinnerMaterial.setAdapter(dataAdapterMaterial);
+
             Button dialogButton = (Button) dialog.findViewById(R.id.buttonOk);
             dialogButton.setOnClickListener(v1 -> {
                 //moguce da pukne radi ovog DOUBLE jer ne prima num.decimal nego string
@@ -139,7 +141,7 @@ public class AdminInvoiceFragment extends Fragment {
     private List<ViewInvoice> getList(){
         db = DatabaseConnection.getDbInstance(getContext());
         viewInvoiceList = new ArrayList<>();
-        viewInvoiceList = db.MaterialConsumptionDao().getInvoiceByTaskID(tasksListAdmin.get(selected_task).getTask_id());
+        viewInvoiceList = db.MaterialConsumptionDao().getInvoiceByTaskID(selected_task);
         return viewInvoiceList;
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 public interface RoleDao {
 
     @Query("SELECT * FROM role")
-    List<Role> readAllRole();
+    List<Role> getAllRoles();
 
     @Query("INSERT INTO role VALUES (:id, :name)")
     void insertRole(Integer id, String name);

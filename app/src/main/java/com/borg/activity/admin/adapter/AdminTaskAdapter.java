@@ -26,6 +26,7 @@ public class AdminTaskAdapter extends RecyclerView.Adapter<AdminTaskAdapter.View
     Context context;
     DatabaseConnection db;
     List<ViewUserTasks> tasksListAdmin;
+    Integer clickedTask_ID;
 
     public AdminTaskAdapter(Context context, List<ViewUserTasks> tasksListAdmin) {
         this.context = context;
@@ -48,8 +49,10 @@ public class AdminTaskAdapter extends RecyclerView.Adapter<AdminTaskAdapter.View
 
             //on row click
             holder.holderItemDetails.setOnClickListener(v -> {
+
+                clickedTask_ID = model.getTask_id();
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                Fragment myFragment = new AdminInvoiceFragment(position, tasksListAdmin);//Proslijedi poziciju kliknutog redka u novi fragment
+                Fragment myFragment = new AdminInvoiceFragment(clickedTask_ID, tasksListAdmin);//Proslijedi poziciju kliknutog redka u novi fragment
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.navHostFragmentAdmin, myFragment).addToBackStack(null).commit();
             });
 
