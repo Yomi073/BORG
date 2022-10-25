@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ import com.borg.activity.admin.adapter.AdminInvoiceAdapter;
 import com.borg.activity.admin.adapter.AdminTaskAdapter;
 import com.borg.model.DatabaseConnection;
 import com.borg.model.database.Client;
+import com.borg.model.database.MaterialStock;
 import com.borg.model.database.User;
 import com.borg.model.database.ViewInvoice;
 import com.borg.model.database.ViewUserTasks;
@@ -96,22 +98,39 @@ public class AdminInvoiceFragment extends Fragment {
 
         ImageButton addButton = view.findViewById(R.id.addButton);
         addButton.setOnClickListener( v -> {
-            /* dodaj postojece materijale iz baze na ovaj racun
+
             final Dialog dialog = new Dialog(getContext());
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setCancelable(false);
+            dialog.setCancelable(true);
             dialog.setContentView(R.layout.dialog_add_invoice_material);
 
+            final Spinner spinnerMaterial = (Spinner) dialog.findViewById(R.id.spinner_id_material);
+            final EditText quantityMaterial = (EditText) dialog.findViewById(R.id.add_fromdatabase_material_txt_material_quantity) ;
+
+            List<MaterialStock> material = db.MaterialStockDao().getAllMaterials();
+
+            List<String> materialItem = new ArrayList<>();
+
+            for (MaterialStock materialStock: material) {
+                materialItem.add(materialStock.getId()+" "+materialStock.getName());
+            }
+
+            // Creating adapter for spinner
+            ArrayAdapter<String> dataAdapterMaterial = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_item, materialItem);
+            // Drop down layout style - list view with radio button
+            dataAdapterMaterial.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            // attaching data adapter to spinner
+            spinnerMaterial.setAdapter(dataAdapterMaterial);
             Button dialogButton = (Button) dialog.findViewById(R.id.buttonOk);
             dialogButton.setOnClickListener(v1 -> {
-                String userSelected[] = String.valueOf(spinnerUser.getSelectedItem()).split(" ");
-                String clientSelected[] = String.valueOf(spinnerClient.getSelectedItem()).split(" ");
-                db.TaskDao().insertNewTask(Integer.parseInt(userSelected[0]),Integer.parseInt(clientSelected[0]),new Date());
-                adminTaskAdapter.notifyItemAdd();
+                //moguce da pukne radi ovog DOUBLE jer ne prima num.decimal nego string
+                Double quantity = Double.parseDouble(quantityMaterial.getText().toString());
+                String materialSelected[] = String.valueOf(spinnerMaterial.getSelectedItem()).split(" ");
+                db.MaterialConsumptionDao().insertNewMaterialIntoTaskByTaskFK(tasksListAdmin.get(selected_task).getTask_id() ,Integer.parseInt(materialSelected[0]), quantity);
+                adminInvoiceAdapter.notifyItemAdd();
                 dialog.dismiss();
             });
             dialog.show();
-            */
         });
 
     }

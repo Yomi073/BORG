@@ -59,4 +59,7 @@ public interface MaterialConsumptionDao {
             "FROM materialconsumption LEFT JOIN materialstock ON materialconsumption.materialStock_FK = materialstock.id LEFT JOIN task ON materialconsumption.task_FK = task.id")
     List<ViewInvoice> getAllInvoice();
 
+    @Query("INSERT INTO materialconsumption (task_FK, materialStock_FK, quantity) VALUES(:task_id, :materialStock_id, :quantity)")
+    void insertNewMaterialIntoTaskByTaskFK(Integer task_id,Integer materialStock_id,Double quantity);
+
 }

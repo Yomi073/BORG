@@ -51,7 +51,6 @@ public interface TaskDao {
             "FROM task LEFT JOIN client ON task.client_FK = client.id LEFT JOIN user ON task.user_FK = user.id WHERE task.user_FK = :i")
     List<ViewUserTasks> getUserTasks(int i);
 
-
     @Query("SELECT " +
             "task.id AS task_id, " +
             "task.date AS task_date, " +

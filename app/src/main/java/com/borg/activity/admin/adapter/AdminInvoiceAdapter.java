@@ -76,7 +76,6 @@ public class AdminInvoiceAdapter extends RecyclerView.Adapter<AdminInvoiceAdapte
 
     public void notifyItemAdd(){
         db = DatabaseConnection.getDbInstance(context);
-        //treba popravit SQL UPIT DA VRACA LISTU OTISA SAM SPAVAT SUTRA CU
         viewInvoice=db.MaterialConsumptionDao().getInvoiceByTaskID(viewInvoice.get(selected_task).getId_task());
         notifyDataSetChanged();
     }

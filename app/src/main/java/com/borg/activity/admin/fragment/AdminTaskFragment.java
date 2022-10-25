@@ -66,7 +66,7 @@ public class AdminTaskFragment extends Fragment {
 
             final Dialog dialog = new Dialog(getContext());
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setCancelable(false);
+            dialog.setCancelable(true);
             dialog.setContentView(R.layout.dialog_add_task);
 
             final Spinner spinnerUser = (Spinner) dialog.findViewById(R.id.spinner_id_user);

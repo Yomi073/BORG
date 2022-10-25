@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+import androidx.room.Query;
 
 @Entity(tableName = "materialconsumption", foreignKeys = {@ForeignKey(entity = MaterialStock.class, parentColumns = "id",childColumns = "materialStock_FK", onDelete = 5), @ForeignKey(entity = Task.class, parentColumns = "id",childColumns = "task_FK", onDelete = 5)})
 public class MaterialConsumption {
