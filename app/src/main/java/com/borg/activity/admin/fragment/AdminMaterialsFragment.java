@@ -58,12 +58,11 @@ public class AdminMaterialsFragment extends Fragment {
         //Add new material button
         ImageButton addButton = view.findViewById(R.id.addButton);
         addButton.setOnClickListener( v -> {
+
             final Dialog dialog = new Dialog(getContext());
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setCancelable(false);
+            dialog.setCancelable(true);
             dialog.setContentView(R.layout.dialog_add_material);
-
-            //TO DO: SPINNER ADD MATERIAL
 
             EditText name = (EditText) dialog.findViewById(R.id.add_material_txt_material_name);
             EditText quantity = (EditText) dialog.findViewById(R.id.add_material_txt_material_quantity);

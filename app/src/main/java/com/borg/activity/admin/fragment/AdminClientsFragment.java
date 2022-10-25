@@ -1,5 +1,6 @@
 package com.borg.activity.admin.fragment;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,11 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Spinner;
 
 import com.borg.R;
 import com.borg.activity.admin.adapter.AdminClientsAdapter;
 import com.borg.model.DatabaseConnection;
 import com.borg.model.database.Client;
+import com.borg.model.database.Role;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +57,30 @@ public class AdminClientsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         AdminClientsAdapter adminClientsAdapter = new AdminClientsAdapter(getContext(),getList());
         recyclerView.setAdapter(adminClientsAdapter);
+
+        ImageButton addButton = view.findViewById(R.id.addButton);
+        addButton.setOnClickListener( v -> {
+
+            final Dialog dialog = new Dialog(getContext());
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(true);
+            dialog.setContentView(R.layout.dialog_add_client);
+
+            EditText firstName = (EditText) dialog.findViewById(R.id.add_client_txt_first_name);
+            EditText lastName = (EditText) dialog.findViewById(R.id.add_client_txt_last_name);
+            EditText address = (EditText) dialog.findViewById(R.id.add_client_txt_address);
+            EditText phone = (EditText) dialog.findViewById(R.id.add_client_txt_phone);
+            EditText email = (EditText) dialog.findViewById(R.id.add_client_txt_email);
+
+            Button dialogButton = (Button) dialog.findViewById(R.id.buttonOk);
+            dialogButton.setOnClickListener(v1 -> {
+                db.ClientDao().insertNewClient(firstName.getText().toString(),lastName.getText().toString(),address.getText().toString(),phone.getText().toString(),email.getText().toString());
+                adminClientsAdapter.notifyItemAdd();
+                dialog.dismiss();
+            });
+            dialog.show();
+        });
+
     }
 
     private List<Client> getList(){
