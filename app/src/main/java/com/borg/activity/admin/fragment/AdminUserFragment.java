@@ -22,6 +22,7 @@ import java.util.List;
 
 public class AdminUserFragment extends Fragment {
 
+    DatabaseConnection db;
     RecyclerView recyclerView;
     List<User> usersList_admin;
 
@@ -51,7 +52,7 @@ public class AdminUserFragment extends Fragment {
     }
 
     private List<User> getList(){
-        DatabaseConnection db = DatabaseConnection.getDbInstance(getContext());
+        db = DatabaseConnection.getDbInstance(getContext());
         usersList_admin = new ArrayList<>();
         usersList_admin = db.UserDao().getAllUsers();
         return usersList_admin;

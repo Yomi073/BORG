@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,11 +21,11 @@ public class AdminUsersAdapter extends RecyclerView.Adapter<AdminUsersAdapter.Vi
 
     Context context;
     DatabaseConnection db;
-    List<User> clientList;
+    List<User> userList;
 
-    public AdminUsersAdapter(Context context, List<User> clientList) {
+    public AdminUsersAdapter(Context context, List<User> userList) {
         this.context = context;
-        this.clientList = clientList;
+        this.userList = userList;
         this.db = DatabaseConnection.getDbInstance(context);
     }
 
@@ -36,8 +38,10 @@ public class AdminUsersAdapter extends RecyclerView.Adapter<AdminUsersAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull AdminUsersAdapter.ViewHolder holder, int position) {
-        if(clientList != null && clientList.size() > 0){
-            User model = clientList.get(position);
+        if(userList != null && userList.size() > 0){
+            db = DatabaseConnection.getDbInstance(context);
+            User model = userList.get(position);
+            //initialise columns
             holder.tab_admin_users_col1.setText(String.valueOf(model.getId()));
             holder.tab_admin_users_col2.setText(model.getFirstName());
             holder.tab_admin_users_col3.setText(model.getLastName());
@@ -47,22 +51,34 @@ public class AdminUsersAdapter extends RecyclerView.Adapter<AdminUsersAdapter.Vi
             holder.tab_admin_users_col7.setText(model.getUserName());
             holder.tab_admin_users_col8.setText(String.valueOf(model.getPassword()));
             holder.tab_admin_users_col9.setText(db.UserDao().getRoleByFK(model.getRole_FK()));
+            //delete materials button
+            holder.deleteButton.setOnClickListener( v -> {
+                db.UserDao().deleteUserId(model.getId());
+                userList.remove(position);
+                notifyItemRemoved(position);
+            });
 
         }
     }
 
     @Override
-    public int getItemCount() {
-        return clientList.size();
+    public int getItemCount() {return userList.size();}
+
+    public void notifyItemAdd(){
+        db = DatabaseConnection.getDbInstance(context);
+        userList=db.UserDao().getAllUsers();
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tab_admin_users_col1,tab_admin_users_col2,tab_admin_users_col3,tab_admin_users_col4,tab_admin_users_col5,tab_admin_users_col6,tab_admin_users_col7,tab_admin_users_col8,tab_admin_users_col9;
+        ImageButton deleteButton;
+        LinearLayout holderItemDetails;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            holderItemDetails = itemView.findViewById(R.id.taskButton);
             tab_admin_users_col1 = itemView.findViewById(R.id.tab_admin_users_col1);
             tab_admin_users_col2 = itemView.findViewById(R.id.tab_admin_users_col2);
             tab_admin_users_col3 = itemView.findViewById(R.id.tab_admin_users_col3);
@@ -72,6 +88,7 @@ public class AdminUsersAdapter extends RecyclerView.Adapter<AdminUsersAdapter.Vi
             tab_admin_users_col7 = itemView.findViewById(R.id.tab_admin_users_col7);
             tab_admin_users_col8 = itemView.findViewById(R.id.tab_admin_users_col8);
             tab_admin_users_col9 = itemView.findViewById(R.id.tab_admin_users_col9);
+            deleteButton = itemView.findViewById(R.id.deleteButton);
         }
     }
 }

@@ -67,13 +67,8 @@ public class Task {
         this.pauseLength = pauseLength;
     }
 
-    @TypeConverters({TimestampConverter.class})
-    public Date getDate() {
+    public Date getDate() {return date;}
 
-        return date;
-    }
-
-    @TypeConverters({TimestampConverter.class})
     public void setDate(Date date) {
         this.date = date;
     }

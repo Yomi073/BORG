@@ -18,6 +18,8 @@ public class MaterialConsumption {
     @ColumnInfo(name = "task_FK", index = true)
     public Integer task_FK;
 
+
+
     public MaterialConsumption(MaterialConsumption materialConsumption) {
         this.id = materialConsumption.getId();
         this.quantity = materialConsumption.getQuantity();

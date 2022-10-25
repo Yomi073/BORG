@@ -99,7 +99,7 @@ public class Login extends AppCompatActivity {
             db.RoleDao().insertRole(1, "Admin");
             db.RoleDao().insertRole(2, "User");
         }
-        List<User> rsu = db.UserDao().readAllUsers();
+        List<User> rsu = db.UserDao().getAllUsers();
         if(rsu.isEmpty()) {
             db.UserDao().insertNewUser("admin","admin","admin","1","admin","admin","admin",1);
             db.UserDao().insertNewUser("a","a","a","1","a","a","a",1);

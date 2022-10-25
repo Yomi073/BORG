@@ -12,13 +12,13 @@ import java.util.List;
 public interface UserDao {
 
     @Query("SELECT * FROM user")
-    List<User> readAllUsers();
-
-    @Query("SELECT * FROM user")
     List<User> getAllUsers();
 
     @Update
     void update(User User);
+
+    @Query("DELETE FROM user WHERE id = :id")
+    void deleteUserId(Integer id);
 
     @Query("SELECT * FROM user WHERE id = :id")
     User getUser(Integer id);

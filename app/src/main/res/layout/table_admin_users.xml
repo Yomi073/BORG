@@ -1,82 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:stretchColumns="1,2,3,4,5,6,7,8">
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
 
-    <TableRow>
+    <LinearLayout
+        android:id="@+id/taskButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <TextView
             android:id="@+id/tab_admin_users_col1"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:textAlignment="center"
-            android:layout_column="1"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/tab_admin_users_col2"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:textAlignment="center"
-            android:layout_column="2"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/tab_admin_users_col3"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:textAlignment="center"
-            android:layout_column="3"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/tab_admin_users_col4"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:textAlignment="center"
-            android:layout_column="4"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/tab_admin_users_col5"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:textAlignment="center"
-            android:layout_column="5"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/tab_admin_users_col6"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:textAlignment="center"
-            android:layout_column="6"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/tab_admin_users_col7"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:textAlignment="center"
-            android:layout_column="7"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/tab_admin_users_col8"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:textAlignment="center"
-            android:layout_column="8"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/tab_admin_users_col9"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="10dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:textAlignment="center"
-            android:layout_column="8"/>
-    </TableRow>
-
-</TableLayout>
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_delete"
+            android:layout_marginStart="30dp"/>
+    </LinearLayout>
+</LinearLayout>

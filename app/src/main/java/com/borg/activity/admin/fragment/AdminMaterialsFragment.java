@@ -1,5 +1,6 @@
 package com.borg.activity.admin.fragment;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.borg.R;
 import com.borg.activity.admin.adapter.AdminMaterialsAdapter;
@@ -18,11 +23,13 @@ import com.borg.model.DatabaseConnection;
 import com.borg.model.database.MaterialStock;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AdminMaterialsFragment extends Fragment {
 
     RecyclerView recyclerView;
+    DatabaseConnection db = DatabaseConnection.getDbInstance(getContext());
     List<MaterialStock> materialsList;
 
     public AdminMaterialsFragment() {
@@ -45,13 +52,36 @@ public class AdminMaterialsFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycler_view_admin_materials);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
         AdminMaterialsAdapter adminMaterialsAdapter = new AdminMaterialsAdapter(getContext(),getList());
         recyclerView.setAdapter(adminMaterialsAdapter);
+
+        //Add new material button
+        ImageButton addButton = view.findViewById(R.id.addButton);
+        addButton.setOnClickListener( v -> {
+            final Dialog dialog = new Dialog(getContext());
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_add_material);
+
+            //TO DO: SPINNER ADD MATERIAL
+
+            EditText name = (EditText) dialog.findViewById(R.id.add_material_txt_material_name);
+            EditText quantity = (EditText) dialog.findViewById(R.id.add_material_txt_material_quantity);
+            EditText purchasePrice = (EditText) dialog.findViewById(R.id.add_material_txt_purchase_price);
+            EditText sellingPrice = (EditText) dialog.findViewById(R.id.add_material_txt_selling_price);
+
+            Button dialogButton = (Button) dialog.findViewById(R.id.buttonOk);
+            dialogButton.setOnClickListener(v1 -> {
+                db.MaterialStockDao().insertNewMaterialStock(name.getText().toString(),Double.parseDouble(quantity.getText().toString()),Double.parseDouble(purchasePrice.getText().toString()),Double.parseDouble(sellingPrice.getText().toString()));
+                adminMaterialsAdapter.notifyItemAdd();
+                dialog.dismiss();
+            });
+            dialog.show();
+        });
+
     }
 
     private List<MaterialStock> getList(){
-        DatabaseConnection db = DatabaseConnection.getDbInstance(getContext());
         materialsList = new ArrayList<>();
         materialsList = db.MaterialStockDao().getAllMaterials();
         return materialsList;

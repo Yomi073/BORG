@@ -20,8 +20,8 @@ public interface MaterialStockDao {
     @Query("DELETE FROM materialStock")
     void deleteAllMaterialStock();
 
-    @Delete
-    void delete(MaterialStock materialStock);
+    @Query("DELETE FROM materialstock WHERE materialstock.id = :id")
+    void deleteMaterialId(Integer id);
 
     @Query("SELECT * FROM materialstock")
     List<MaterialStock> getAllMaterials();

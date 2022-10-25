@@ -22,6 +22,7 @@ import java.util.List;
 
 public class AdminClientsFragment extends Fragment {
 
+    DatabaseConnection db;
     RecyclerView recyclerView;
     List<Client> clientList;
 
@@ -51,7 +52,7 @@ public class AdminClientsFragment extends Fragment {
     }
 
     private List<Client> getList(){
-        DatabaseConnection db = DatabaseConnection.getDbInstance(getContext());
+        db = DatabaseConnection.getDbInstance(getContext());
         clientList = new ArrayList<>();
         clientList = db.ClientDao().getAllClients();
         return clientList;

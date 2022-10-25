@@ -28,6 +28,7 @@ import java.util.List;
 
 public class UserTaskFragment extends Fragment {
 
+    DatabaseConnection db;
     RecyclerView recyclerView;
     List<ViewUserTasks> taskList;
 
@@ -48,16 +49,17 @@ public class UserTaskFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        db = DatabaseConnection.getDbInstance(getContext());
 
         recyclerView = view.findViewById(R.id.recycler_view_user_task);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        UserTaskAdapter userTaskAdapter = new UserTaskAdapter(getContext(),getList());
+        UserTaskAdapter userTaskAdapter = new UserTaskAdapter(getActivity(),getList());
         recyclerView.setAdapter(userTaskAdapter);
 
     }
 
     private List<ViewUserTasks> getList(){
-        DatabaseConnection db = DatabaseConnection.getDbInstance(getContext());
+        db = DatabaseConnection.getDbInstance(getContext());
         taskList = new ArrayList<>();
         taskList = db.TaskDao().getUserTasks(Login.getLoggedUser());
         return taskList;

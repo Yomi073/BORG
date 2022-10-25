@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
@@ -23,7 +22,6 @@ import com.borg.R;
 import com.borg.activity.admin.adapter.AdminTaskAdapter;
 import com.borg.model.DatabaseConnection;
 import com.borg.model.database.Client;
-import com.borg.model.database.Task;
 import com.borg.model.database.User;
 import com.borg.model.database.ViewUserTasks;
 
@@ -31,13 +29,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class AdminTaskFragment extends Fragment {
+public class AdminInvoiceFragment extends Fragment {
 
     DatabaseConnection db;
     RecyclerView recyclerView;
     List<ViewUserTasks> tasksList_admin;
 
-    public AdminTaskFragment() {
+    public AdminInvoiceFragment() {
         // Required empty public constructor
     }
 
@@ -46,7 +44,7 @@ public class AdminTaskFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_admin_task, container, false);
+        return inflater.inflate(R.layout.fragment_admin_invoice, container, false);
     }
 
     @Override
@@ -54,45 +52,18 @@ public class AdminTaskFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         db = DatabaseConnection.getDbInstance(getContext());
 
-        recyclerView = view.findViewById(R.id.recycler_view_admin_tasks);
+        recyclerView = view.findViewById(R.id.recycler_view_invoice);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         AdminTaskAdapter adminTaskAdapter = new AdminTaskAdapter(getActivity(),getList());
         recyclerView.setAdapter(adminTaskAdapter);
 
         ImageButton addButton = view.findViewById(R.id.addButton);
-
         addButton.setOnClickListener( v -> {
-
+            /* dodaj postojece materijale iz baze na ovaj racun
             final Dialog dialog = new Dialog(getContext());
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setCancelable(false);
-            dialog.setContentView(R.layout.dialog_add_task);
-
-            final Spinner spinnerUser = (Spinner) dialog.findViewById(R.id.spinner_id_user);
-            final Spinner spinnerClient = (Spinner) dialog.findViewById(R.id.spinner_id_client);
-
-            List<User> users = db.UserDao().getAllUsers();
-            List<Client> clients = db.ClientDao().getAllClients();
-
-            List<String> usersItem = new ArrayList<>();
-            List<String> clientsItem = new ArrayList<>();
-
-            for (User user: users) {
-                usersItem.add(user.getId()+" "+user.getUserName());
-            }
-            for (Client client: clients) {
-                clientsItem.add(client.getId()+" "+client.getFirstName()+" "+client.getLastName());
-            }
-
-            // Creating adapter for spinner
-            ArrayAdapter<String> dataAdapterUser = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_item, usersItem);
-            ArrayAdapter<String> dataAdapterClient = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_item, clientsItem);
-            // Drop down layout style - list view with radio button
-            dataAdapterUser.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            dataAdapterClient.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            // attaching data adapter to spinner
-            spinnerUser.setAdapter(dataAdapterUser);
-            spinnerClient.setAdapter(dataAdapterClient);
+            dialog.setContentView(R.layout.dialog_add_invoice_material);
 
             Button dialogButton = (Button) dialog.findViewById(R.id.buttonOk);
             dialogButton.setOnClickListener(v1 -> {
@@ -103,8 +74,11 @@ public class AdminTaskFragment extends Fragment {
                 dialog.dismiss();
             });
             dialog.show();
+            */
         });
+
     }
+
 
     private List<ViewUserTasks> getList(){
         db = DatabaseConnection.getDbInstance(getContext());

@@ -1,16 +1,9 @@
 package com.borg.model.database;
 
-import androidx.room.TypeConverters;
-
-import com.borg.model.TimestampConverter;
-
-import java.util.Date;
-
 public class ViewUserTasks {
 
     private Integer task_id;
-    @TypeConverters({TimestampConverter.class})
-    private Date task_date;
+    private String task_date;
     private Integer user_id;
     private Integer client_id;
     private String user_firstName;
@@ -18,7 +11,7 @@ public class ViewUserTasks {
     private String client_address;
     private String client_phoneNumber;
 
-    public ViewUserTasks(Integer task_id, Date task_date, Integer user_id, Integer client_id, String user_firstName, String client_firstName, String client_address, String client_phoneNumber) {
+    public ViewUserTasks(Integer task_id, String task_date, Integer user_id, Integer client_id, String user_firstName, String client_firstName, String client_address, String client_phoneNumber) {
         this.task_id = task_id;
         this.task_date = task_date;
         this.user_id = user_id;
@@ -37,13 +30,11 @@ public class ViewUserTasks {
         this.task_id = task_id;
     }
 
-    @TypeConverters({TimestampConverter.class})
-    public Date getTask_date() {
+    public String getTask_date() {
         return task_date;
     }
 
-    @TypeConverters({TimestampConverter.class})
-    public void setTask_date(Date task_date) {
+    public void setTask_date(String task_date) {
         this.task_date = task_date;
     }
 
