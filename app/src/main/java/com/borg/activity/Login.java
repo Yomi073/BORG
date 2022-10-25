@@ -109,32 +109,32 @@ public class Login extends AppCompatActivity {
         }
         List<Client> rsc = db.ClientDao().getAllClients();
         if (rsc.isEmpty()) {
-            db.ClientDao().insertNewClient("markoooooooooooooooo", "Studencioooooooo");
-            db.ClientDao().insertNewClient("ivan", "Ligat");
-            db.ClientDao().insertNewClient("ante", "Vitina");
-            db.ClientDao().insertNewClient("matej", "Crnopod");
+            db.ClientDao().insertNewClient("Marko", "Eres","Studenci", "063744744","markoeres@gmail.com");
+            db.ClientDao().insertNewClient("Ivan", "Kozina", "Hrasljani", "71717171", "ivankozina@gmail.com");
+            db.ClientDao().insertNewClient("Ante", "Boras", "Vitina", "63636363", "prodajemmed@gmail.com");
+            db.ClientDao().insertNewClient("Matej", "Vasilj", "Crnopod", "7272727", "igramWOW@gmail.com");
         }
         List<Task> rst = db.TaskDao().readAllTask();
 
         if (rst.isEmpty()) {
-            db.TaskDao().insertNewTask(1,1, new Date());
-            db.TaskDao().insertNewTask(1,2, new Date());
-            db.TaskDao().insertNewTask(1,3, new Date());
+            db.TaskDao().insertNewTask(1,1,new Date());
+            db.TaskDao().insertNewTask(1,2,new Date());
+            db.TaskDao().insertNewTask(1,3,new Date());
             db.TaskDao().insertNewTask(1,4,new Date());
             db.TaskDao().insertNewTask(2,1,new Date());
-            db.TaskDao().insertNewTask(2,2, new Date());
+            db.TaskDao().insertNewTask(2,2,new Date());
             db.TaskDao().insertNewTask(2,3,new Date());
             db.TaskDao().insertNewTask(2,4,new Date());
             db.TaskDao().insertNewTask(3,1,new Date());
-            db.TaskDao().insertNewTask(3,2, new Date());
+            db.TaskDao().insertNewTask(3,2,new Date());
             db.TaskDao().insertNewTask(3,3,new Date());
             db.TaskDao().insertNewTask(3,4,new Date());
             db.TaskDao().insertNewTask(4,1,new Date());
-            db.TaskDao().insertNewTask(4,2, new Date());
+            db.TaskDao().insertNewTask(4,2,new Date());
             db.TaskDao().insertNewTask(4,3,new Date());
             db.TaskDao().insertNewTask(4,4,new Date());
             db.TaskDao().insertNewTask(5,1,new Date());
-            db.TaskDao().insertNewTask(5,2, new Date());
+            db.TaskDao().insertNewTask(5,2,new Date());
             db.TaskDao().insertNewTask(5,3,new Date());
             db.TaskDao().insertNewTask(5,4,new Date());
         }

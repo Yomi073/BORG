@@ -1,6 +1,7 @@
 package com.borg.activity.admin.adapter;
 
 import android.content.Context;
+import android.icu.text.Edits;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,19 +18,21 @@ import com.borg.R;
 import com.borg.activity.admin.fragment.AdminInvoiceFragment;
 import com.borg.model.DatabaseConnection;
 import com.borg.model.database.MaterialStock;
-import com.borg.model.database.MaterialConsumption;
+import com.borg.model.database.ViewInvoice;
+import com.borg.model.database.ViewUserTasks;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class AdminInvoiceAdapter extends RecyclerView.Adapter<AdminInvoiceAdapter.ViewHolder> {
 
     Context context;
     DatabaseConnection db;
-    List<MaterialConsumption> materialConsumption;
+    List<ViewInvoice> viewInvoice;
 
-    public AdminInvoiceAdapter(Context context, List<MaterialConsumption> materialConsumption) {
+    public AdminInvoiceAdapter(Context context, List<ViewInvoice> viewInvoice) {
         this.context = context;
-        this.materialConsumption = materialConsumption;
+        this.viewInvoice = viewInvoice;
         this.db = DatabaseConnection.getDbInstance(context);
     }
 
@@ -42,24 +45,23 @@ public class AdminInvoiceAdapter extends RecyclerView.Adapter<AdminInvoiceAdapte
 
     @Override
     public void onBindViewHolder(@NonNull AdminInvoiceAdapter.ViewHolder holder, int position) {
-        if(materialConsumption != null && materialConsumption.size() > 0){
+        if(viewInvoice != null && viewInvoice.size() > 0){
             db = DatabaseConnection.getDbInstance(context);
-            MaterialConsumption model = materialConsumption.get(position);
+            ViewInvoice model = viewInvoice.get(position);
             //on row click
 
-                //TODO
-                //postavit vrijenosti fragmenta: txtClientName  txtClientAddress  txtClientPhone  txtClientID  txtTaskID  txtTaskDate  txtTaskTotalSum;
 
             //initialise columns
-            holder.tab_invoice_col1.setText(model.getId().toString());
-            holder.tab_invoice_col2.setText(model.getMaterialName().toString());
-            holder.tab_invoice_col3.setText(model.getMaterialQuantity().toString());
-            holder.tab_invoice_col4.setText(model.getMaterialSellingPrice().toString());
-            holder.tab_invoice_col5.setText(model.getMaterialPriceSum().toString());
+            holder.tab_invoice_col1.setText(model.getIndeks().toString());
+            holder.tab_invoice_col2.setText(model.getMaterial_name().toString());
+            holder.tab_invoice_col3.setText(model.getQuantity_on_invoice().toString());
+            holder.tab_invoice_col4.setText(model.getSellingPrice().toString());
+            holder.tab_invoice_col5.setText(model.getSum().toString());
+
             //delete materials button
             holder.deleteButton.setOnClickListener( v -> {
-                db.MaterialConsumptionDao().deleteTaskId(model.getTask_id());
-                materialConsumption.remove(position);
+                db.MaterialConsumptionDao().deleteMaterialConsumptionById(model.getIndeks());
+                viewInvoice.remove(position);
                 notifyItemRemoved(position);
             });
         }
@@ -67,14 +69,13 @@ public class AdminInvoiceAdapter extends RecyclerView.Adapter<AdminInvoiceAdapte
 
     @Override
     public int getItemCount() {
-        return materialConsumption.size();
+        return viewInvoice.size();
     }
 
     public void notifyItemAdd(){
         db = DatabaseConnection.getDbInstance(context);
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
         //treba popravit SQL UPIT DA VRACA LISTU OTISA SAM SPAVAT SUTRA CU
-        materialConsumption=db.MaterialConsumptionDao().getInvoiceByTaskID();
+        viewInvoice=db.MaterialConsumptionDao().getAllInvoice();
         notifyDataSetChanged();
     }
 

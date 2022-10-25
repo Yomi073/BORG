@@ -10,8 +10,9 @@ public class ViewInvoice {
     private Double quantity_on_invoice;
     private Double purchasePrice;
     private Double sellingPrice;
+    private Double sum;
 
-    public ViewInvoice(Integer indeks, Integer id_on_stock, String material_name, Double quantity_on_stock, Double quantity_on_invoice, Double purchasePrice, Double sellingPrice, Integer id_task) {
+    public ViewInvoice(Integer indeks, Integer id_on_stock, String material_name, Double quantity_on_stock, Double quantity_on_invoice, Double purchasePrice, Double sellingPrice, Integer id_task, Double sum) {
         this.indeks = indeks;
         this.id_on_stock = id_on_stock;
         this.material_name = material_name;
@@ -20,6 +21,7 @@ public class ViewInvoice {
         this.purchasePrice = purchasePrice;
         this.sellingPrice = sellingPrice;
         this.id_task = id_task;
+        this.sum = sum;
     }
 
     public Integer getIndeks() {
@@ -84,5 +86,13 @@ public class ViewInvoice {
 
     public void setId_task(Integer id_task) {
         this.id_task = id_task;
+    }
+
+    public Double getSum() {
+        return sum;
+    }
+
+    public void setSum(Double sum) {
+        this.sum = sum;
     }
 }

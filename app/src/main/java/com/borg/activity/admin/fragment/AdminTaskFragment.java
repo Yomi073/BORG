@@ -53,10 +53,11 @@ public class AdminTaskFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         db = DatabaseConnection.getDbInstance(getContext());
+        tasksList_admin = getList();
 
         recyclerView = view.findViewById(R.id.recycler_view_admin_tasks);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        AdminTaskAdapter adminTaskAdapter = new AdminTaskAdapter(getActivity(),getList());
+        AdminTaskAdapter adminTaskAdapter = new AdminTaskAdapter(getActivity(),tasksList_admin);
         recyclerView.setAdapter(adminTaskAdapter);
 
         ImageButton addButton = view.findViewById(R.id.addButton);

@@ -45,22 +45,20 @@ public class AdminTaskAdapter extends RecyclerView.Adapter<AdminTaskAdapter.View
         if(tasksListAdmin != null && tasksListAdmin.size() > 0){
             db = DatabaseConnection.getDbInstance(context);
             ViewUserTasks model = tasksListAdmin.get(position);
+
             //on row click
             holder.holderItemDetails.setOnClickListener(v -> {
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                Fragment myFragment = new AdminInvoiceFragment();
+                Fragment myFragment = new AdminInvoiceFragment(position, tasksListAdmin);//Proslijedi poziciju kliknutog redka u novi fragment
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.navHostFragmentAdmin, myFragment).addToBackStack(null).commit();
-                //TODO
-                //postavit vrijenosti fragmenta: txtClientName  txtClientAddress  txtClientPhone  txtClientID  txtTaskID  txtTaskDate  txtTaskTotalSum;
-
-
-
             });
+
             //initialise columns
             holder.tab_admin_tasks_col1.setText(String.valueOf(model.getTask_id()));
             holder.tab_admin_tasks_col2.setText(model.getClient_firstName());
             holder.tab_admin_tasks_col3.setText(model.getClient_address());
             holder.tab_admin_tasks_col4.setText(model.getTask_date().toString());
+
             //delete materials button
             holder.deleteButton.setOnClickListener( v -> {
                 db.TaskDao().deleteTaskId(model.getTask_id());

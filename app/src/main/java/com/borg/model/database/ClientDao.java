@@ -1,5 +1,6 @@
 package com.borg.model.database;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -26,6 +27,6 @@ public interface ClientDao {
     @Query("SELECT * FROM client")
     List<Client> getAllClients();
 
-    @Query("INSERT INTO client (firstName, address) VALUES(:firstName,:address)")
-    void insertNewClient(String firstName, String address);
+    @Query("INSERT INTO client (firstName, lastName, address, phoneNumber, email) VALUES(:firstName,:lastName,:address,:phoneNumber,:email)")
+    void insertNewClient(String firstName, String lastName, String address, String phoneNumber, String email);
 }

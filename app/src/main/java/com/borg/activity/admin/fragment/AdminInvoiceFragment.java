@@ -17,12 +17,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.borg.R;
+import com.borg.activity.admin.adapter.AdminInvoiceAdapter;
 import com.borg.activity.admin.adapter.AdminTaskAdapter;
 import com.borg.model.DatabaseConnection;
 import com.borg.model.database.Client;
 import com.borg.model.database.User;
+import com.borg.model.database.ViewInvoice;
 import com.borg.model.database.ViewUserTasks;
 
 import java.util.ArrayList;
@@ -33,7 +37,14 @@ public class AdminInvoiceFragment extends Fragment {
 
     DatabaseConnection db;
     RecyclerView recyclerView;
-    List<ViewUserTasks> tasksList_admin;
+    List<ViewInvoice> viewInvoiceList;
+    List<ViewUserTasks> tasksListAdmin;
+    Integer selected_task;
+
+    public AdminInvoiceFragment(Integer selected_task, List<ViewUserTasks> tasksListAdmin) {
+        this.selected_task = selected_task;
+        this.tasksListAdmin = tasksListAdmin;
+    }
 
     public AdminInvoiceFragment() {
         // Required empty public constructor
@@ -51,11 +62,37 @@ public class AdminInvoiceFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         db = DatabaseConnection.getDbInstance(getContext());
+        viewInvoiceList = getList();
+
+        TextView txtClientName= view.findViewById(R.id.txtClientName);
+        TextView txtClientAddress= view.findViewById(R.id.txtClientAddress);
+        TextView txtClientPhone= view.findViewById(R.id.txtClientPhone);
+        TextView txtClientID= view.findViewById(R.id.txtClientID);
+        TextView txtTaskID= view.findViewById(R.id.txtTaskID);
+        TextView txtTaskDate= view.findViewById(R.id.txtTaskDate);
+        TextView txtTaskTotalSum= view.findViewById(R.id.txtTaskTotalSum);
+
+        //ako nisu svi podaci uneseni program puca
+        try {
+            ViewUserTasks clientModel = tasksListAdmin.get(selected_task);
+            txtClientName.setText(clientModel.getClient_firstName().toString());
+            txtClientAddress.setText(clientModel.getClient_address().toString());
+            txtClientPhone.setText(clientModel.getClient_phoneNumber().toString());
+            txtClientID.setText(clientModel.getClient_id().toString());
+            txtTaskID.setText(clientModel.getTask_id().toString());
+            txtTaskDate.setText(clientModel.getTask_date().toString());
+            txtTaskTotalSum.setText(getInvoiceTotal(viewInvoiceList).toString());
+        }catch (Exception e) {
+            Toast.makeText(getContext(),e.getMessage(), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
 
         recyclerView = view.findViewById(R.id.recycler_view_invoice);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        AdminTaskAdapter adminTaskAdapter = new AdminTaskAdapter(getActivity(),getList());
-        recyclerView.setAdapter(adminTaskAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));//mozda treba poslat poziciju
+        AdminInvoiceAdapter adminInvoiceAdapter = new AdminInvoiceAdapter(getActivity(),viewInvoiceList);
+        recyclerView.setAdapter(adminInvoiceAdapter);
+
+
 
         ImageButton addButton = view.findViewById(R.id.addButton);
         addButton.setOnClickListener( v -> {
@@ -80,10 +117,19 @@ public class AdminInvoiceFragment extends Fragment {
     }
 
 
-    private List<ViewUserTasks> getList(){
+    private List<ViewInvoice> getList(){
         db = DatabaseConnection.getDbInstance(getContext());
-        tasksList_admin = new ArrayList<>();
-        tasksList_admin = db.TaskDao().getAllTasks();
-        return tasksList_admin;
+        viewInvoiceList = new ArrayList<>();
+        viewInvoiceList = db.MaterialConsumptionDao().getInvoiceByTaskID(selected_task);
+        return viewInvoiceList;
     }
+
+    public Double getInvoiceTotal(List<ViewInvoice> viewInvoice){
+        Double sum=0.0;
+        for(int i = 0; i < viewInvoice.size(); i++){
+            sum = sum + viewInvoice.get(i).getSum();
+        }
+        return sum;
+    }
+
 }
