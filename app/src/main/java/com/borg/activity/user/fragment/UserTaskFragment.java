@@ -50,10 +50,11 @@ public class UserTaskFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         db = DatabaseConnection.getDbInstance(getContext());
+        taskList = getList();
 
         recyclerView = view.findViewById(R.id.recycler_view_user_task);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        UserTaskAdapter userTaskAdapter = new UserTaskAdapter(getActivity(),getList());
+        UserTaskAdapter userTaskAdapter = new UserTaskAdapter(getActivity(),taskList);
         recyclerView.setAdapter(userTaskAdapter);
 
     }
