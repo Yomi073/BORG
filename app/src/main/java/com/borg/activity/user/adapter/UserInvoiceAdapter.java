@@ -33,7 +33,7 @@ public class UserInvoiceAdapter extends RecyclerView.Adapter<UserInvoiceAdapter.
     @NonNull
     @Override
     public UserInvoiceAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.table_invoice, parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.table_invoice_user, parent,false);
         return new UserInvoiceAdapter.ViewHolder(view);
     }
 
@@ -46,11 +46,11 @@ public class UserInvoiceAdapter extends RecyclerView.Adapter<UserInvoiceAdapter.
 
 
             //initialise columns
-            holder.tab_invoice_col1.setText(model.getIndeks().toString());
-            holder.tab_invoice_col2.setText(model.getMaterial_name().toString());
-            holder.tab_invoice_col3.setText(model.getQuantity_on_invoice().toString());
-            holder.tab_invoice_col4.setText(model.getSellingPrice().toString());
-            holder.tab_invoice_col5.setText(model.getSum().toString());
+            holder.tab_invoice_user_col1.setText(model.getIndeks().toString());
+            holder.tab_invoice_user_col2.setText(model.getMaterial_name().toString());
+            holder.tab_invoice_user_col3.setText(model.getQuantity_on_invoice().toString());
+            holder.tab_invoice_user_col4.setText(model.getSellingPrice().toString());
+            holder.tab_invoice_user_col5.setText(model.getSum().toString());
 
         }
     }
@@ -68,17 +68,17 @@ public class UserInvoiceAdapter extends RecyclerView.Adapter<UserInvoiceAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tab_invoice_col1,tab_invoice_col2,tab_invoice_col3,tab_invoice_col4,tab_invoice_col5;
+        TextView tab_invoice_user_col1,tab_invoice_user_col2,tab_invoice_user_col3,tab_invoice_user_col4,tab_invoice_user_col5;
         LinearLayout holderItemDetails;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             holderItemDetails = itemView.findViewById(R.id.taskButton);
-            tab_invoice_col1 = itemView.findViewById(R.id.tab_invoice_col1);
-            tab_invoice_col2 = itemView.findViewById(R.id.tab_invoice_col2);
-            tab_invoice_col3 = itemView.findViewById(R.id.tab_invoice_col3);
-            tab_invoice_col4 = itemView.findViewById(R.id.tab_invoice_col4);
-            tab_invoice_col5 = itemView.findViewById(R.id.tab_invoice_col5);
+            tab_invoice_user_col1 = itemView.findViewById(R.id.tab_invoice_user_col1);
+            tab_invoice_user_col2 = itemView.findViewById(R.id.tab_invoice_user_col2);
+            tab_invoice_user_col3 = itemView.findViewById(R.id.tab_invoice_user_col3);
+            tab_invoice_user_col4 = itemView.findViewById(R.id.tab_invoice_user_col4);
+            tab_invoice_user_col5 = itemView.findViewById(R.id.tab_invoice_user_col5);
         }
     }
 }

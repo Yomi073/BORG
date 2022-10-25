@@ -1,7 +1,6 @@
 package com.borg.activity.admin.adapter;
 
 import android.content.Context;
-import android.icu.text.Edits;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,18 +9,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.borg.R;
-import com.borg.activity.admin.fragment.AdminInvoiceFragment;
 import com.borg.model.DatabaseConnection;
-import com.borg.model.database.MaterialStock;
 import com.borg.model.database.ViewInvoice;
-import com.borg.model.database.ViewUserTasks;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class AdminInvoiceAdapter extends RecyclerView.Adapter<AdminInvoiceAdapter.ViewHolder> {
@@ -41,7 +34,7 @@ public class AdminInvoiceAdapter extends RecyclerView.Adapter<AdminInvoiceAdapte
     @NonNull
     @Override
     public AdminInvoiceAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.table_invoice, parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.table_invoice_admin, parent,false);
         return new AdminInvoiceAdapter.ViewHolder(view);
     }
 
