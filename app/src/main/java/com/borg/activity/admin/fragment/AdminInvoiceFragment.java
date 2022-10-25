@@ -89,7 +89,7 @@ public class AdminInvoiceFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycler_view_invoice);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));//mozda treba poslat poziciju
-        AdminInvoiceAdapter adminInvoiceAdapter = new AdminInvoiceAdapter(getActivity(),viewInvoiceList);
+        AdminInvoiceAdapter adminInvoiceAdapter = new AdminInvoiceAdapter(getActivity(),viewInvoiceList,selected_task);
         recyclerView.setAdapter(adminInvoiceAdapter);
 
 
@@ -120,7 +120,7 @@ public class AdminInvoiceFragment extends Fragment {
     private List<ViewInvoice> getList(){
         db = DatabaseConnection.getDbInstance(getContext());
         viewInvoiceList = new ArrayList<>();
-        viewInvoiceList = db.MaterialConsumptionDao().getInvoiceByTaskID(selected_task);
+        viewInvoiceList = db.MaterialConsumptionDao().getInvoiceByTaskID(tasksListAdmin.get(selected_task).getTask_id());
         return viewInvoiceList;
     }
 

@@ -78,7 +78,7 @@ public class UserInvoiceFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycler_view_invoice);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));//mozda treba poslat poziciju
-        UserInvoiceAdapter userInvoiceAdapter = new UserInvoiceAdapter(getActivity(),viewInvoiceList);
+        UserInvoiceAdapter userInvoiceAdapter = new UserInvoiceAdapter(getActivity(),viewInvoiceList,selected_task);
         recyclerView.setAdapter(userInvoiceAdapter);
 
     }
@@ -87,7 +87,7 @@ public class UserInvoiceFragment extends Fragment {
     private List<ViewInvoice> getList(){
         db = DatabaseConnection.getDbInstance(getContext());
         viewInvoiceList = new ArrayList<>();
-        viewInvoiceList = db.MaterialConsumptionDao().getInvoiceByTaskID(selected_task);
+        viewInvoiceList = db.MaterialConsumptionDao().getInvoiceByTaskID(tasksListUser.get(selected_task).getTask_id());
         return viewInvoiceList;
     }
 

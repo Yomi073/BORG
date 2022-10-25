@@ -21,11 +21,13 @@ public class UserInvoiceAdapter extends RecyclerView.Adapter<UserInvoiceAdapter.
     Context context;
     DatabaseConnection db;
     List<ViewInvoice> viewInvoice;
+    Integer selected_task;
 
-    public UserInvoiceAdapter(Context context, List<ViewInvoice> viewInvoice) {
+    public UserInvoiceAdapter(Context context, List<ViewInvoice> viewInvoice, Integer selected_task) {
         this.context = context;
         this.viewInvoice = viewInvoice;
         this.db = DatabaseConnection.getDbInstance(context);
+        this.selected_task = selected_task;
     }
 
     @NonNull
@@ -60,7 +62,7 @@ public class UserInvoiceAdapter extends RecyclerView.Adapter<UserInvoiceAdapter.
 
     public void notifyItemAdd(){
         db = DatabaseConnection.getDbInstance(context);
-        viewInvoice=db.MaterialConsumptionDao().getAllInvoice();
+        viewInvoice=db.MaterialConsumptionDao().getInvoiceByTaskID(viewInvoice.get(selected_task).getId_task());
         notifyDataSetChanged();
     }
 
