@@ -23,10 +23,8 @@ public class TimestampConverter {
             return null;
         }
     }
-
     @TypeConverter
     public static String fromDate(Date value) {
         return sdf.format(value);
     }
-
 }

@@ -55,9 +55,11 @@ public class AdminInvoiceAdapter extends RecyclerView.Adapter<AdminInvoiceAdapte
 
             //delete materials button
             holder.deleteButton.setOnClickListener( v -> {
+                db.MaterialStockDao().updateMaterialOnStock(model.getId_on_stock(), model.getQuantity_on_invoice()+ model.getQuantity_on_stock());
                 db.MaterialConsumptionDao().deleteMaterialConsumptionById(model.getIndeks());
                 viewInvoice.remove(position);
                 notifyItemRemoved(position);
+
             });
         }
     }

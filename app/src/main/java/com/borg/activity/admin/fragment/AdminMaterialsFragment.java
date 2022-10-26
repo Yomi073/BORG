@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -50,6 +52,10 @@ public class AdminMaterialsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+        Fragment fragment = activity.getSupportFragmentManager().findFragmentByTag("TASK");
+        if (fragment != null) activity.getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+
         recyclerView = view.findViewById(R.id.recycler_view_admin_materials);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         AdminMaterialsAdapter adminMaterialsAdapter = new AdminMaterialsAdapter(getContext(),getList());
@@ -63,6 +69,13 @@ public class AdminMaterialsFragment extends Fragment {
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setCancelable(true);
             dialog.setContentView(R.layout.dialog_add_material);
+
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+            lp.copyFrom(dialog.getWindow().getAttributes());
+            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+            dialog.show();
+            dialog.getWindow().setAttributes(lp);
 
             EditText name = (EditText) dialog.findViewById(R.id.add_material_txt_material_name);
             EditText quantity = (EditText) dialog.findViewById(R.id.add_material_txt_material_quantity);

@@ -19,15 +19,6 @@ public class MaterialConsumption {
     @ColumnInfo(name = "task_FK", index = true)
     public Integer task_FK;
 
-
-
-    public MaterialConsumption(MaterialConsumption materialConsumption) {
-        this.id = materialConsumption.getId();
-        this.quantity = materialConsumption.getQuantity();
-        this.materialStock_FK = materialConsumption.getMaterialStock_FK();
-        this.task_FK = materialConsumption.getTask_FK();
-    }
-
     public MaterialConsumption(Integer id, String quantity, Integer materialStock_FK, Integer task_FK) {
         this.id = id;
         this.quantity = quantity;

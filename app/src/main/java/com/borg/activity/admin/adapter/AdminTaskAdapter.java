@@ -53,7 +53,7 @@ public class AdminTaskAdapter extends RecyclerView.Adapter<AdminTaskAdapter.View
                 clickedTask_ID = model.getTask_id();
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 Fragment myFragment = new AdminInvoiceFragment(clickedTask_ID, tasksListAdmin);//Proslijedi poziciju kliknutog redka u novi fragment
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.navHostFragmentAdmin, myFragment).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.navHostFragmentAdmin, myFragment, "TASK").addToBackStack(null).commit();
             });
 
             //initialise columns

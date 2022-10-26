@@ -101,11 +101,11 @@ public class Login extends AppCompatActivity {
         }
         List<User> rsu = db.UserDao().getAllUsers();
         if(rsu.isEmpty()) {
-            db.UserDao().insertNewUser("admin","admin","admin","1","admin","admin","admin",1);
-            db.UserDao().insertNewUser("a","a","a","1","a","a","a",1);
-            db.UserDao().insertNewUser("q","q","q","2","q","q","q",2);
-            db.UserDao().insertNewUser("s","s","s","2","s","s","s",2);
-            db.UserDao().insertNewUser("w","w","w","2","w","w","w",2);
+            db.UserDao().insertNewUser("Admin","admin","admin","1","admin","admin","admin",1);
+            db.UserDao().insertNewUser("Matko","Dugandzic","Zagreb","777888777","matkovmail@gmail.com","matko","matko",1);
+            db.UserDao().insertNewUser("Ivan","Ivanovic","Split","111444555","ivanovmail@gmail.com","maliodpalube","ivan",2);
+            db.UserDao().insertNewUser("Slavko","Santic","Slavonski Brod","888777666","slavkovgmai.com","slavonac","s",2);
+            db.UserDao().insertNewUser("Martin","White","Ploce","666666666","whitemail@gmail.com","crni","w",2);
         }
         List<Client> rsc = db.ClientDao().getAllClients();
         if (rsc.isEmpty()) {
@@ -142,8 +142,8 @@ public class Login extends AppCompatActivity {
 
         if(rsms.isEmpty()){
             db.MaterialStockDao().insertNewMaterialStock("sijalica",600.0,2.0,4.0);
-            db.MaterialStockDao().insertNewMaterialStock("kablo",10000.0,0.1,0.7);
-            db.MaterialStockDao().insertNewMaterialStock("steker", 750.0,20.0,27.0);
+            db.MaterialStockDao().insertNewMaterialStock("uticnica",10000.0,0.1,0.7);
+            db.MaterialStockDao().insertNewMaterialStock("prekidac", 750.0,20.0,27.0);
         }
         List<MaterialConsumption> rsmc = db.MaterialConsumptionDao().readAllMaterialConsumption();
 

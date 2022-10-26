@@ -37,12 +37,11 @@ public abstract class DatabaseConnection extends RoomDatabase {
     public static DatabaseConnection getDbInstance(Context context){
 
         if(INSTANCE == null){
+            //OVDJE UNOSIMO PODATKE ZA KONEKCIJU NA BAZU
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), DatabaseConnection.class, "BORG_DB")
                     .allowMainThreadQueries()
                     .build();
         }
         return INSTANCE;
     }
-
-
 }

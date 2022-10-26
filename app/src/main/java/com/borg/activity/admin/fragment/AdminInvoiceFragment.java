@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.borg.R;
+import com.borg.activity.Login;
 import com.borg.activity.admin.adapter.AdminInvoiceAdapter;
 import com.borg.activity.admin.adapter.AdminTaskAdapter;
 import com.borg.model.DatabaseConnection;
@@ -34,6 +37,7 @@ import com.borg.model.database.ViewUserTasks;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AdminInvoiceFragment extends Fragment {
 
@@ -74,9 +78,8 @@ public class AdminInvoiceFragment extends Fragment {
         TextView txtTaskDate= view.findViewById(R.id.txtTaskDate);
         TextView txtTaskTotalSum= view.findViewById(R.id.txtTaskTotalSum);
 
-        //ako nisu svi podaci uneseni program puca
         try {
-            ViewUserTasks clientModel = tasksListAdmin.get(selected_task);
+            ViewUserTasks clientModel = tasksListAdmin.stream().filter(e->e.getTask_id()==selected_task).collect(Collectors.toList()).get(0);
             txtClientName.setText(clientModel.getClient_firstName().toString());
             txtClientAddress.setText(clientModel.getClient_address().toString());
             txtClientPhone.setText(clientModel.getClient_phoneNumber().toString());
@@ -105,6 +108,13 @@ public class AdminInvoiceFragment extends Fragment {
             dialog.setCancelable(true);
             dialog.setContentView(R.layout.dialog_add_invoice_material);
 
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+            lp.copyFrom(dialog.getWindow().getAttributes());
+            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+            dialog.show();
+            dialog.getWindow().setAttributes(lp);
+
             Spinner spinnerMaterial = (Spinner) dialog.findViewById(R.id.spinner_id_material);
             EditText quantityMaterial = (EditText) dialog.findViewById(R.id.add_fromdatabase_material_txt_material_quantity) ;
 
@@ -125,12 +135,17 @@ public class AdminInvoiceFragment extends Fragment {
 
             Button dialogButton = (Button) dialog.findViewById(R.id.buttonOk);
             dialogButton.setOnClickListener(v1 -> {
-                //moguce da pukne radi ovog DOUBLE jer ne prima num.decimal nego string
                 Double quantity = Double.parseDouble(quantityMaterial.getText().toString());
                 String materialSelected[] = String.valueOf(spinnerMaterial.getSelectedItem()).split(" ");
-                db.MaterialConsumptionDao().insertNewMaterialIntoTaskByTaskFK(tasksListAdmin.get(selected_task).getTask_id() ,Integer.parseInt(materialSelected[0]), quantity);
-                adminInvoiceAdapter.notifyItemAdd();
-                dialog.dismiss();
+                Double stock = db.MaterialStockDao().getMaterialQuantityByID(Integer.parseInt(materialSelected[0]));
+                if(stock < quantity){
+                    Toast.makeText(getActivity(),"There is not enough material on stock. Material quantity is :" + stock,  Toast.LENGTH_LONG).show();
+                }else{
+                    db.MaterialStockDao().updateMaterialOnStock(Integer.parseInt(materialSelected[0]),stock-quantity);
+                    db.MaterialConsumptionDao().insertNewMaterialIntoTaskByTaskFK(selected_task,Integer.parseInt(materialSelected[0]), quantity);
+                    adminInvoiceAdapter.notifyItemAdd();
+                    dialog.dismiss();
+                }
             });
             dialog.show();
         });

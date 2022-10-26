@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,6 +57,10 @@ public class AdminTaskFragment extends Fragment {
         db = DatabaseConnection.getDbInstance(getContext());
         tasksList_admin = getList();
 
+        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+        Fragment fragment = activity.getSupportFragmentManager().findFragmentByTag("TASK");
+        if (fragment != null) activity.getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+
         recyclerView = view.findViewById(R.id.recycler_view_admin_tasks);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         AdminTaskAdapter adminTaskAdapter = new AdminTaskAdapter(getActivity(),tasksList_admin);
@@ -67,6 +73,13 @@ public class AdminTaskFragment extends Fragment {
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setCancelable(true);
             dialog.setContentView(R.layout.dialog_add_task);
+
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+            lp.copyFrom(dialog.getWindow().getAttributes());
+            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+            dialog.show();
+            dialog.getWindow().setAttributes(lp);
 
             final Spinner spinnerUser = (Spinner) dialog.findViewById(R.id.spinner_id_user);
             final Spinner spinnerClient = (Spinner) dialog.findViewById(R.id.spinner_id_client);

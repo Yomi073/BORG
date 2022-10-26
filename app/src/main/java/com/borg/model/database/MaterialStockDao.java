@@ -26,7 +26,12 @@ public interface MaterialStockDao {
     @Query("SELECT * FROM materialstock")
     List<MaterialStock> getAllMaterials();
 
+    @Query("SELECT quantity FROM materialstock WHERE id = :id")
+    Double getMaterialQuantityByID(Integer id);
+
     @Query("INSERT INTO materialstock (name, quantity, purchasePrice, sellingPrice) VALUES (:name, :quantity, :purchasePrice, :sellingPrice)")
     void insertNewMaterialStock(String name, Double quantity, Double purchasePrice, Double sellingPrice);
 
+    @Query("UPDATE materialstock SET quantity = :quantity WHERE id = :id")
+    void updateMaterialOnStock(Integer id, Double quantity);
 }
